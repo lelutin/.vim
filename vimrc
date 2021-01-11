@@ -1,6 +1,9 @@
 set encoding=utf-8  " No, I don't want to write files as latin1
 scriptencoding utf-8
 
+" This is a really cool reference:
+" https://github.com/johngrib/vimscript-cheatsheet
+
 " Manage plugins with Vundle. This one has the advantage over pathogen that it
 " manages the git repos itself and it'll git pull automatically when running
 " :PluginUpdate
