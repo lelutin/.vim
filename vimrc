@@ -83,6 +83,7 @@ set hlsearch        " Higlight searched term
 "set softtabstop=4   " Make backspace delete that many characters
 "set shiftwidth=4    " Number of spaces used for automatic indentation
 "set expandtab       " Transform <tab> characters into spaces
+set shiftround      " when indenting, always line up with multiples of shiftwidth instead of blindly adding shiftwidth
 set showtabline=2   " Always show tabline for window height consistency
 set guioptions-=T   " Disable the toolbar in the GUI
 
