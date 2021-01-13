@@ -249,6 +249,11 @@ let g:netrw_winsize = 25
 " Make vim-cool show number of search matches
 let g:CoolTotalMatches = 1
 
+" activate some more markdown features
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
+let g:vim_markdown_new_list_item_indent = 2
+
 " Location list navigation
 "
 " Use mappings from plugin/location_wrap to make it easier to move in the
