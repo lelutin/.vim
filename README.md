@@ -183,6 +183,10 @@ issues.
 
 * `,rn` :: renommer une variable ou une classe (et toutes ses références)
 
+*vim-markdown*:
+
+* `:InsertNToc` :: Insérer une table tes matières numérotée
+
 **i-mode**:
 
 * `<c-w>` :: nuke word
