@@ -79,7 +79,7 @@ issues.
 * `[g` :: aller au diagnostique précédent (wrap au début)
 * `[G` :: aller au diagnostique suivant (wrap à la fin)
 * `gd` :: aller à la définition (ouvre une liste et un preview si c'est dans un
-    autre fichier)
+  autre fichier)
 * `gr` :: lister les références d'une variable ou fonction
 * TODO trouver ce que ca fait `gy`, et `gi`
 * `K` :: afficher la documentation d'une fonction ou classe dans une popup
@@ -155,7 +155,7 @@ issues.
 * `gcc` :: toggle commentaire
 * `gcu` :: décommenter la ligne et toutes les lignes de commentaire adjacentes
 * `gc${mouvement}` :: toggle commentaire selon un mouvement (e.g. gcB mettre tout
-    un bloc en commentaire)
+  un bloc en commentaire)
 
 *vim-speeddating*:
 
@@ -186,6 +186,8 @@ issues.
 *vim-markdown*:
 
 * `:InsertNToc` :: Insérer une table tes matières numérotée
+* `:HeaderIncrease`/`:HeaderDecrease` :: Augmenter/Décrémenter tous les niveaux
+  de headers du buffer
 
 **i-mode**:
 
@@ -206,8 +208,8 @@ issues.
 *vim-speeddating*:
 
 * `<c-a>` :: si la première ligne de la sélection contient un numéro et que les
-    lignes en dessous sont vides (p-e des espaces seulement), créé une séquence
-    numérique au même niveau d'indentation que le nombre sur la première ligne.
+  lignes en dessous sont vides (p-e des espaces seulement), créé une séquence
+  numérique au même niveau d'indentation que le nombre sur la première ligne.
 * `<c-x>` :: même chose que `<c-a>` mais en décrémentant.
 
 ## Toggle des options
