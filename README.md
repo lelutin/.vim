@@ -29,7 +29,7 @@ issues.
   * avec l'option `++no-close` en plus, le terminal sera fermé quand la
     commande se termine (comportement par défaut pour un shell)
 * `:vert term` :: ouvrir un terminal dans un nouveau split vertical
-* `:term ++curwin` :: ouvrir un terminal dans la fenêtre courrante
+* `:term ++curwin` :: ouvrir un terminal dans la fenêtre courante
 
 *vimrc*:
 
@@ -76,12 +76,12 @@ issues.
 
 *coc.nvim*:
 
-* `[g` :: aller au diagnostique précédent (wrap au début)
-* `[G` :: aller au diagnostique suivant (wrap à la fin)
-* `gd` :: aller à la définition (ouvre une liste et un preview si c'est dans un
+* `[g` :: aller au diagnostique précédent (boucle au début)
+* `[G` :: aller au diagnostique suivant (boucle à la fin)
+* `gd` :: aller à la définition (ouvre une liste et un aperçu si c'est dans un
   autre fichier)
 * `gr` :: lister les références d'une variable ou fonction
-* TODO trouver ce que ca fait `gy`, et `gi`
+* TODO trouver ce que ça fait `gy`, et `gi`
 * `K` :: afficher la documentation d'une fonction ou classe dans une popup
 
 **i-mode**:
@@ -93,7 +93,7 @@ issues.
 * `<c-h>` :: reculer d'un mot
 * `<c-l>` :: avancer d'un mot
 * `<c-x><c-e>`/`<c-x><c-y>` :: scroll vers en bas / vers en haut
-* `<c-t>` :: swapper les deux charactères placés avant le curseur (comme `<c-t>` dans bash)
+* `<c-t>` :: swapper les deux caractères placés avant le curseur (comme `<c-t>` dans bash)
 
 **pendant une recherche**:
 
@@ -105,7 +105,7 @@ issues.
 * `<c-p>` :: commande précédente dans l'historique
   * si y'a du texte au début de la ligne de commande, ça ne cherche *pas* une
     commande avec le même préfixe dans l'historique contrairement à la flèche
-    en haut.  c'est dommage... comment est-ce que je pourrais avoir cette
+    en haut. C'est dommage... Comment est-ce que je pourrais avoir cette
     fonctionnalité là sans avoir à me déplacer sur les flèches? :\
 * `<c-n>` :: commande suivante dans l'historique
   * même commentaire que pour `<c-p>`
@@ -121,6 +121,10 @@ issues.
 ## Modifier le texte
 
 **n-mode**:
+
+* `z=` :: Remplacer le mot par une suggestion de dictionnaire
+* `zg` :: Marquer un mot comme "bon" (good) dans le dictionnaire courant
+* `zw` :: Marquer un mot comme "mauvais" (wrong) dans le dictionnaire courant
 
 *vimrc*:
 
@@ -138,7 +142,7 @@ issues.
       * `-` -> `<%- \r -%>`
       * `%` -> `<% \r %>`
       * `=` -> `<%= \r %>`
-* `cs${mouvement}}` :: entourer le nouvement du caractère spécial. (c'est comme
+* `cs${mouvement}}` :: entourer le mouvement du caractère spécial. (c'est comme
   `ysi${mouvement}}`)
 * `ds"` :: retirer les quotes autour du curseur
 * `dst` :: effacer un tag xml autour du curseur
@@ -154,8 +158,8 @@ issues.
 
 * `gcc` :: toggle commentaire
 * `gcu` :: décommenter la ligne et toutes les lignes de commentaire adjacentes
-* `gc${mouvement}` :: toggle commentaire selon un mouvement (e.g. gcB mettre tout
-  un bloc en commentaire)
+* `gc${mouvement}` :: toggle commentaire selon un mouvement (e.g. `gcB` mettre
+  tout un bloc en commentaire)
 
 *vim-speeddating*:
 
@@ -164,14 +168,14 @@ issues.
 
 *vim-unimpaired*:
 
-* `[e` :: échanger la ligne courante avec celle d'au dessus. le cursur monte
+* `[e` :: échanger la ligne courante avec celle d'au dessus. Le curseur monte
   avec la ligne.
-* `]e` :: échanger la ligne courante avec celle d'en dessous. le cursur descend
+* `]e` :: échanger la ligne courante avec celle d'en dessous. Le curseur descend
   avec la ligne.
-* `=p` :: paste après la ligne courante en réindentant le contenu pasté
-* `=P` :: paste avant la ligne courante en réindentant le contenu pasté
+* `=p` :: colle après la ligne courante en réindentant le contenu collé
+* `=P` :: colle avant la ligne courante en réindentant le contenu collé
 * `[op` :: nouvelle ligne après la ligne courante en mode insertion avec
-  'paste' d'activé. 'paste' est désactivé en sortant du mode insertion
+  'paste' activé. 'paste' est désactivé en sortant du mode insertion
 * `[uu` :: URL encode
 * `]uu` :: URL decode
 
@@ -191,15 +195,17 @@ issues.
 
 **i-mode**:
 
-* `<c-w>` :: nuke word
-* `<c-u>` :: nuke line. si la ligne est vide ca l'enlève
-* `<c-i>` :: indent (comme tab)
-* `<c-j>` :: new line (comme enter)
+* `<c-w>` :: effacer un mot avant le curseur
+* `<c-u>` :: effacer toute la ligne. Si la ligne est vide ça l'enlève
+* `<c-i>` :: indenter (comme tab)
+* `<c-j>` :: sauter à la ligne (comme enter)
+* `<c-x>s` :: modifier le mot selon une suggestion de dictionnaire. Ensuite
+  utiliser `<c-n>` et `<c-p>` pour utiliser une autre suggestion
 
 *vim-surround*:
 
 * `<c-s>"` :: insérer des délimiteurs (e.g. "", (), {}, [])
-* `<c-s><c-s>"` :: indente la ligne courante, insert le délimiteur, le curseur à
+* `<c-s><c-s>"` :: indente la ligne courante, insère le délimiteur, le curseur à
   la ligne d'après, indentée, et le délimiteur fermant sur la ligne suivante,
   indentée aussi.
 
@@ -229,7 +235,7 @@ issues.
 
 * `,dpp` :: toggle un breakpoint
 * `,dpc` :: toggle un breakpoint conditionnel (pas supporté par tous les
-  adapteurs
+  adapteurs)
 * `,dpf` :: ajouter un breakpoint de fonction (pas un toggle.. p-e y'aurait
   moyen de le faire?)
 * `,dd` :: lancer une session de débuggage
