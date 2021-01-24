@@ -83,6 +83,7 @@ set hlsearch        " Higlight searched term
 "set softtabstop=4   " Make backspace delete that many characters
 "set shiftwidth=4    " Number of spaces used for automatic indentation
 "set expandtab       " Transform <tab> characters into spaces
+set autoindent      " always line up with indentation of previous line
 set shiftround      " when indenting, always line up with multiples of shiftwidth instead of blindly adding shiftwidth
 set showtabline=2   " Always show tabline for window height consistency
 set guioptions-=T   " Disable the toolbar in the GUI
@@ -142,6 +143,9 @@ set formatoptions+=cro
 " don't break lines automatically if they were already longer than textwidth
 " when going to insert mode
 set formatoptions+=l
+
+" remember more commands and search patterns
+set history=1000
 
 " displace the viminfo file into XDG_DATA_HOME
 set viminfofile=~/.local/share/vim/viminfo
@@ -208,6 +212,16 @@ inoremap <C-a> <C-o>0
 " jump words with h and l
 inoremap <C-h> <C-o>b
 inoremap <C-l> <C-o>w
+
+" Create undo break point for c-u and c-w. this way it's possible to undo when
+" I make a mistake. Without this, undo would remove everything that was typed
+" while in insert mode!
+if empty(mapcheck('<C-U>', 'i'))
+  inoremap <C-U> <C-G>u<C-U>
+endif
+if empty(mapcheck('<C-W>', 'i'))
+  inoremap <C-W> <C-G>u<C-W>
+endif
 
 " Additional character replacements for surround.vim
 augroup vimrc_surround
