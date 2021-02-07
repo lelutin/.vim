@@ -222,6 +222,8 @@ issues.
 
 **n-mode**:
 
+* `:set spelllang=fr_fr` :: changer le dictionnaire au français
+
 *vim-unimpaired*:
 
 * `yon` :: numéros de lignes
