@@ -59,7 +59,6 @@ Plugin 'puremourning/vimspector'  " vim debugging IDE
 Plugin 'tpope/vim-fugitive' " Interact with git from vim
 
 " Interface additions/changes
-"Plugin 'junegunn/limelight.vim' " Make everything grey except for current paragraph
 Plugin 'bling/vim-airline' " Enhanced statusbar and titlebar
 "Plugin 'scrooloose/nerdtree' " Opening a dir shows a file list
 "Plugin 'Xuyuanp/nerdtree-git-plugin' " make nerdtree show git status markers on files
@@ -193,12 +192,6 @@ set foldlevel=2
 let g:perl_fold = 1
 let g:ruby_fold = 1
 let g:sh_fold_enabled = 7 " used as a bitfield by the syntax file. 1 = functions, 2 = heredoc, 4 = idofor
-
-" " Limelight doesn't like my color scheme. need to define conceal color
-" " Color name (:help cterm-colors) or ANSI code
-" let g:limelight_conceal_ctermfg = 'gray'
-" " Make it a bit easier to toggle limelight mode
-" nnoremap <leader>l :Limelight!!<CR>
 
 " Swapping characters is way too useful and there's already <c-i> for indenting
 " This swaps the two characters placed before the cursor (e.g. behaves like
