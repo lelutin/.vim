@@ -193,6 +193,18 @@ let g:perl_fold = 1
 let g:ruby_fold = 1
 let g:sh_fold_enabled = 7 " used as a bitfield by the syntax file. 1 = functions, 2 = heredoc, 4 = idofor
 
+" Override the builtin gx command since it's doing nonsense.
+function! OpenURLUnderCursor()
+  let s:uri = expand('<cWORD>')
+  let s:uri = substitute(s:uri, '?', '\\?', '')
+  let s:uri = shellescape(s:uri, 1)
+  if s:uri != ''
+    silent exec "!gio open '".s:uri."'"
+    :redraw!
+  endif
+endfunction
+nnoremap gx :call OpenURLUnderCursor()<CR>
+
 " Swapping characters is way too useful and there's already <c-i> for indenting
 " This swaps the two characters placed before the cursor (e.g. behaves like
 " bash's emacs-mode <c-t>
