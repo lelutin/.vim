@@ -30,6 +30,7 @@ issues.
     commande se termine (comportement par défaut pour un shell)
 * `:vert term` :: ouvrir un terminal dans un nouveau split vertical
 * `:term ++curwin` :: ouvrir un terminal dans la fenêtre courante
+* `<c-w>N` :: changer au mode "normal". Super utile dans une fenêtre de terminal.
 
 *vimrc*:
 
