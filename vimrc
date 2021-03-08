@@ -374,6 +374,10 @@ let g:airline#extensions#gutentags#enabled = 1  " Show gutentag ctags generation
 " Add syntax-based matching for %
 packadd! matchit
 
+" Make the :Man command available. This one is not in a pack in the default
+" setup.
+runtime ftplugin/man.vim
+
 if has('autocmd')
   " function! MyLastWindow()
   "   if &filetype ==# 'nerdtree' && winbufnr(2) == -1
