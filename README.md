@@ -190,7 +190,7 @@ issues.
 
 *vim-markdown*:
 
-* `:InsertNToc` :: Insérer une table tes matières numérotée
+* `:InsertNToc` :: Insérer une table des matières numérotée
 * `:HeaderIncrease`/`:HeaderDecrease` :: Augmenter/Décrémenter tous les niveaux
   de headers du buffer
 
