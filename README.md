@@ -133,6 +133,8 @@ issues.
   courant
 * `,Ew` :: Editer un fichier dans la fenêtre actuelle, dans le même répertoire
   que le fichier courant
+* `,ml` :: Ajouter un match qui highlight la ligne
+* `,mc` :: Effacer (clear) les matches (donc les highlights)
 
 *vim-surround*:
 

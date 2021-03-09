@@ -437,6 +437,17 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " Enable indentation coloring for easier visual reference
 let g:indent_guides_enable_on_vim_startup = 1
 
+" define highlight color for marking certain lines
+highlight LineHighlight ctermbg=darkgray guibg=darkgray
+
+" highlight (match) the current line
+" Note that this line won't follow changes in the file. If it becomes annoying
+" I could always use https://github.com/inkarkat/vim-mark instead
+nnoremap ml :call matchadd('LineHighlight', '\%'.line('.').'l')<CR>
+
+" clear all the matches (so also highlighted lines)
+nnoremap mc :call clearmatches()<CR>
+
 "" UltiSnips
 ""
 "" Open snippet edition in a new tab instead of current window
