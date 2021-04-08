@@ -63,6 +63,7 @@ Plugin 'bling/vim-airline' " Enhanced statusbar and titlebar
 "Plugin 'scrooloose/nerdtree' " Opening a dir shows a file list
 "Plugin 'Xuyuanp/nerdtree-git-plugin' " make nerdtree show git status markers on files
 Plugin 'nathanaelkane/vim-indent-guides' " colorize indents
+Plugin 'junegunn/vim-peekaboo'  " Display registers when using " or @ commands to make it easier to choose
 
 "Debug/testing
 Plugin 'junegunn/vader.vim' " Used for testing vim-puppet
