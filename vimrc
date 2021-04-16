@@ -34,6 +34,7 @@ Plugin 'romainl/vim-cool' " Automatically disable hlsearch to get it out of the 
 Plugin 'rodjek/vim-puppet' " puppet syntax hilighting
 Plugin 'plasticboy/vim-markdown' " better markdown syntax hilighting
 Plugin 'stephpy/vim-yaml'  " better yaml syntax hilighting
+Plugin 'cespare/vim-toml'  " TOML syntax highlighting
 " also see this for potential puppet integration https://github.com/rodjek/vim-puppet/issues/125
 Plugin 'noprompt/vim-yardoc'  " colorize YARD tags and directives in ruby code
 Plugin 'aliou/bats.vim'  " BATS syntax hilighting
