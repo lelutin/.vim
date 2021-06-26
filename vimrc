@@ -171,6 +171,9 @@ set textwidth=79
 " horizontally, which looks really bad
 set diffopt+=vertical
 
+" default to french dictionary
+set spelllang=fr
+
 " Interface color
 " note: needs to be before the status line stuff
 colorscheme slate
