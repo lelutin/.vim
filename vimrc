@@ -261,12 +261,6 @@ let g:netrw_banner = 0
 "let g:netrw_browse_split = 1
 let g:netrw_winsize = 25
 
-"" NERDTree configuration
-"let NERDTreeHighlightCursorline = 1
-"let NERDTReeIgnore = ['\.pyc$', '~$', '\.class$', '\.o', '\.so', '\.vagrant', '\.pc' ]
-
-" nnoremap <leader>t :NERDTreeToggle<CR>
-
 " Make vim-cool show number of search matches
 let g:CoolTotalMatches = 1
 
@@ -381,10 +375,6 @@ packadd! matchit
 runtime ftplugin/man.vim
 
 augroup vimrc
-  " TODO: not sure how to push this out to a plugin in ~/.vim ...
-  " Quit if the last window is NERDTree
-  "au BufEnter * call MyLastWindow()
-
   " TODO: not sure how to push this out to a plugin in ~/.vim ...
   " Show trailing whitepaces and leading mixed tabs + spaces:
   autocmd Syntax * syn match ErrorMsg /\s\+$\|^ \+\ze\t\|^\t\+\ze / containedin=ALL
