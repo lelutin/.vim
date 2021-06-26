@@ -394,6 +394,13 @@ augroup vimrc
   "   terminals will not get this command run.
   let non_interactive_filetypes = ['coc-explorer']
   au FileType * if index(non_interactive_filetypes, &ft) < 0 | let w:m2=matchadd('ErrorMsg', '\%120v', -1) | endif
+
+  " Templates for some default content for certain files
+  " this file was adapted from https://github.com/puppetlabs/pdk-templates/blob/master/moduleroot_init/README.md.erb
+  autocmd BufNewFile README.md 0r ~/.vim/templates/README.md
+  autocmd BufNewFile CHANGELOG.md 0r ~/.vim/templates/CHANGELOG.md
+  autocmd BufNewFile *.sh 0r ~/.vim/templates/bash.sh
+  autocmd BufNewFile *.pp 0r ~/.vim/templates/puppet.pp
 augroup END
 
 " This looks better but it's pretty annoying when copying text since you'll
