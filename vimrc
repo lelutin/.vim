@@ -380,43 +380,36 @@ packadd! matchit
 " setup.
 runtime ftplugin/man.vim
 
-if has('autocmd')
-  " function! MyLastWindow()
-  "   if &filetype ==# 'nerdtree' && winbufnr(2) == -1
-  "     quit!
-  "   endif
-  " endfunction
-  augroup vimrc
-    " TODO: not sure how to push this out to a plugin in ~/.vim ...
-    " Quit if the last window is NERDTree
-    "au BufEnter * call MyLastWindow()
+augroup vimrc
+  " TODO: not sure how to push this out to a plugin in ~/.vim ...
+  " Quit if the last window is NERDTree
+  "au BufEnter * call MyLastWindow()
 
-    " TODO: not sure how to push this out to a plugin in ~/.vim ...
-    " Show trailing whitepaces and leading mixed tabs + spaces:
-    autocmd Syntax * syn match ErrorMsg /\s\+$\|^ \+\ze\t\|^\t\+\ze / containedin=ALL
+  " TODO: not sure how to push this out to a plugin in ~/.vim ...
+  " Show trailing whitepaces and leading mixed tabs + spaces:
+  autocmd Syntax * syn match ErrorMsg /\s\+$\|^ \+\ze\t\|^\t\+\ze / containedin=ALL
 
-    " TODO: not sure how to push this out to a plugin in ~/.vim ...
-    " Cleanup fugitive buffers as I leave them to avoid clutter.
-    autocmd BufReadPost fugitive://* set bufhidden=delete
+  " TODO: not sure how to push this out to a plugin in ~/.vim ...
+  " Cleanup fugitive buffers as I leave them to avoid clutter.
+  autocmd BufReadPost fugitive://* set bufhidden=delete
 
-    " TODO: not sure how to push this out to a plugin in ~/.vim ...
-    " Highlight first column beyond the 120th one (hilighting more columns is
-    " disruptive). 80 is short and I can deal with cases that complain about
-    " lines longer than 80 when it happens. I randomly chose 120 to have more
-    " space and to just see when a line is really getting out of hands.
-    "
-    " @note syn match [...] breaks syntactic contexts (e.g. strings everywhere)
-    " @note Files that get no type recognized such as empty buffers or
-    "   terminals will not get this command run.
-    let non_interactive_filetypes = ['coc-explorer']
-    au FileType * if index(non_interactive_filetypes, &ft) < 0 | let w:m2=matchadd('ErrorMsg', '\%120v', -1) | endif
-  augroup END
+  " TODO: not sure how to push this out to a plugin in ~/.vim ...
+  " Highlight first column beyond the 120th one (hilighting more columns is
+  " disruptive). 80 is short and I can deal with cases that complain about
+  " lines longer than 80 when it happens. I randomly chose 120 to have more
+  " space and to just see when a line is really getting out of hands.
+  "
+  " @note syn match [...] breaks syntactic contexts (e.g. strings everywhere)
+  " @note Files that get no type recognized such as empty buffers or
+  "   terminals will not get this command run.
+  let non_interactive_filetypes = ['coc-explorer']
+  au FileType * if index(non_interactive_filetypes, &ft) < 0 | let w:m2=matchadd('ErrorMsg', '\%120v', -1) | endif
+augroup END
 
-  " This looks better but it's pretty annoying when copying text since you'll
-  " always obtain spaces up to 80 chars
-  " set colorcolumn=+1
-  hi ColorColumn ctermbg=black guibg=black
-endif
+" This looks better but it's pretty annoying when copying text since you'll
+" always obtain spaces up to 80 chars
+" set colorcolumn=+1
+hi ColorColumn ctermbg=black guibg=black
 
 " Create new buffer and show it in a new vertical split
 nnoremap <C-W>V :vnew<CR>
