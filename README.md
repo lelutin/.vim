@@ -134,7 +134,8 @@ issues.
 * `,Ew` :: Editer un fichier dans la fenêtre actuelle, dans le même répertoire
   que le fichier courant
 * `,ml` :: Ajouter un match qui highlight la ligne
-* `,mc` :: Effacer (clear) les matches (donc les highlights)
+* `,mc` :: Effacer (clear) les matches (donc les highlights). Note: ça enlève
+  aussi les couleurs ajoutées par vim-indent-guides
 
 *vim-surround*:
 
