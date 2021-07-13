@@ -404,6 +404,7 @@ augroup vimrc
   autocmd BufNewFile CHANGELOG.md 0r ~/.vim/templates/CHANGELOG.md
   autocmd BufNewFile *.sh 0r ~/.vim/templates/bash.sh
   autocmd BufNewFile *.pp 0r ~/.vim/templates/puppet.pp
+  autocmd BufNewFile *.py 0r ~/.vim/templates/python.py
 augroup END
 
 " This looks better but it's pretty annoying when copying text since you'll
