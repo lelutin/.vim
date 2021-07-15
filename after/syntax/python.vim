@@ -7,6 +7,10 @@ unlet! b:current_syntax
 let g:rst_syntax_code_list = {}
 syn include @pythonRst syntax/rst.vim
 
+" XXX there's problems with ending a ".. blah::" section -- the region doesn't
+" end until the end of the string
+" XXX sphinx special words like ":param[ ...]:", ":raises ...:" etc don't seem
+" to get highlighted
 " Copied from vim's builtin python syntax file. make sure to keep up to date
 syn region  pythonString matchgroup=pythonTripleQuotes
       \ start=+[uU]\=\z('''\|"""\)+ end="\z1" keepend
