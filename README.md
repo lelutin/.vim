@@ -57,7 +57,7 @@ issues.
 * `<c-f>` :: descendre d'un écran (page suivante -- 'page forward')
 * `m$lettre` :: enregistrer l'emplacement du curseur dans la marque `$lettre`
 * `'$lettre` :: déplacer le curseur au début de la ligne de la marque `$lettre`
-* ```$lettre`` :: déplacer le curseur à la position du marqueur `$lettre`
+* `` `$lettre`` :: déplacer le curseur à la position du marqueur `$lettre`
 * `g;` :: sauter vers l'emplacement du dernier changement dans le buffer
 
 *vim-unimpaired*:
