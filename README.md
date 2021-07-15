@@ -124,8 +124,14 @@ issues.
 **n-mode**:
 
 * `z=` :: Remplacer le mot par une suggestion de dictionnaire
+  * avec un compteur, e.g. `1z=`, automatiquement changer pour la Nième
+    suggestion
 * `zg` :: Marquer un mot comme "bon" (good) dans le dictionnaire courant
 * `zw` :: Marquer un mot comme "mauvais" (wrong) dans le dictionnaire courant
+* `zG` :: Comme `zg` mais pas permanent
+* `zW` :: Comme `zw` mais pas permanent
+* `zuw` / `zug` :: Undo de la commande `zw` / `zg`
+* `zuW` / `zuG` :: Undo de la commande `zW` / `zG`
 
 *vimrc*:
 
