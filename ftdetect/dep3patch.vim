@@ -8,7 +8,7 @@ fun s:DetectDep3Patch()
   while lnum < 100 && lnum < line('$')
     let ltext = getline(lnum)
     if ltext =~# '^\%(Description\|Subject\|Origin\|Bug\|Forwarded\|Author\|From\|Reviewed-by\|Acked-by\|Last-Updated\|Applied-Upstream\):'
-      set ft=dep3patch
+      set filetype=dep3patch
       return
     elseif ltext =~# '^---'
       " end of headers found. stop processing

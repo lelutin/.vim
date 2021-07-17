@@ -10,7 +10,7 @@ scriptencoding utf-8
 " After adding plugins in this list, use :PluginInstall to add the missing
 " plugins.
 filetype off "required to load vundle plugins
-set rtp+=~/.vim/bundle/Vundle.vim
+set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle
 Plugin 'VundleVim/Vundle.vim'
