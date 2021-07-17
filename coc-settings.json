@@ -1,0 +1,44 @@
+{
+  "languageserver": {
+    "puppet": {
+      "command": "ruby",
+      "args": ["/home/gabster/.vim/bundle/vimspector/gadgets/linux/cust_puppet-debugserver/puppet-languageserver","--stdio","--puppet-settings=--modulepath,/home/gabster/koumbit/control-repo/site:/home/gabster/koumbit/control-repo/modules"],
+      "cwd": "/home/gabster/.vim/bundle/vimspector/gadgets/linux",
+      "filetypes": ["puppet"],
+      "rootPatterns": [".git/", "metadata.json"]
+    }
+  },
+  "python.pythonPath": "python3",
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
+  "vimlsp.suggest.fromRuntimepath": true,
+  "diagnostic-languageserver.linters": {
+    "vintstyle": {
+      "command": "vint",
+      "debounce": 100,
+      "args": [ "--enable-neovim", "--style", "-"],
+      "offsetLine": 0,
+      "offsetColumn": 0,
+      "sourceName": "vint",
+      "formatLines": 1,
+      "formatPattern": [
+        "[^:]+:(\\d+):(\\d+):\\s*(.*)(\\r|\\n)*$",
+        {
+          "line": 1,
+          "column": 2,
+          "message": 3
+        }
+      ]
+    }
+  },
+  "diagnostic-languageserver.filetypes": {
+    "vim": "vintstyle",
+    "sh": "shellcheck"
+  },
+  "terminal.REPLMappings": {
+    "python": "ipython3",
+    "ruby": "irb"
+  },
+  "explorer.width": 30,
+  "explorer.icon.enableNerdfont": true
+}
