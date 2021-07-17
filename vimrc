@@ -149,7 +149,9 @@ set formatoptions+=l
 set history=1000
 
 " displace the viminfo file into XDG_DATA_HOME
-set viminfofile=~/.local/share/vim/viminfo
+if ! has('nvim')
+  set viminfofile=~/.local/share/vim/viminfo
+endif
 
 " get completion 'info' into a popup instead of the preview window
 set completeopt = "menu,popup"
@@ -222,6 +224,36 @@ inoremap <C-a> <C-o>0
 " jump words with h and l
 inoremap <C-h> <C-o>b
 inoremap <C-l> <C-o>w
+
+if has('nvim')
+  " nvim doesn't let you move to another window by default when in term-insert mode
+  tnoremap <C-w><C-w> <C-\><C-N><C-W>w
+  tnoremap <C-w>w <C-\><C-N><C-W>w
+  tnoremap <C-w><C-j> <C-\><C-N><C-W>j
+  tnoremap <C-w>j <C-\><C-N><C-W>j
+  tnoremap <C-w><C-k> <C-\><C-N><C-W>k
+  tnoremap <C-w>k <C-\><C-N><C-W>k
+  tnoremap <C-w><C-h> <C-\><C-N><C-W>h
+  tnoremap <C-w>h <C-\><C-N><C-W>h
+  tnoremap <C-w><C-l> <C-\><C-N><C-W>l
+  tnoremap <C-w>l <C-\><C-N><C-W>l
+
+  augroup terminal
+    " Make it easier to go from terminal's insert mode to normal mode, cause <C-w>N
+    " is a PITA to reach for
+    " Just mapping <Esc> is too intrusive though since it makes escape-sequences
+    " like deleting a word impossible to type.
+    tnoremap <C-w><Esc> <C-\><C-N>
+    " nvim doesn't enter insert mode automatically which is annoying
+    autocmd TermOpen * startinsert
+
+    " nvim doesn't let users automatically close the window when the shell exits
+    " this is a workaround to avoid needing to press something
+    autocmd TermClose * call feedkeys("i")
+  augroup END
+else
+  tnoremap <C-w><Esc> <C-w>N
+endif
 
 " Create undo break point for c-u and c-w. this way it's possible to undo when
 " I make a mistake. Without this, undo would remove everything that was typed
@@ -311,6 +343,8 @@ let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-bash-debug' ]
 "
 nnoremap <leader>dd :call vimspector#Launch()<CR>
 " think: debugger exit
+" XXX in nvim, when vimspector failed to initialize the debugger adaptor, this
+"   fails in
 nnoremap <leader>de :call vimspector#Reset()<CR>
 
 " TODO verifier si je peux mapper des trucs un peu plus dans ma face avec une
@@ -358,17 +392,11 @@ nnoremap <leader>dWa :call vimspector#AddWatch()<CR>
 " marche juste en etant dans la fenetre des watches. c'est un peu nono
 nnoremap <leader>dWd :call vimspector#DeleteWatch()<CR>
 
-" Run autoformat when saving code
-" autoformat is doing some serious aweful shit with yaml files.
-"if &filetype!="yaml"
-"  au BufWrite * :Autoformat
-"endif
-
 " Airline configuration
 let g:airline#extensions#tabline#enabled = 1    " Show buffers when there's only one tab
 let g:airline_powerline_fonts = 1               " use powerline fonts. apparently utf8 symbols don't show up right
 let g:airline#extensions#whitespace#enabled = 0 " pesky whitespace detection
-let g:airline#extensions#gutentags#enabled = 1  " Show gutentag ctags generation progress
+"let g:airline#extensions#gutentags#enabled = 1  " Show gutentag ctags generation progress
 
 " Add syntax-based matching for %
 packadd! matchit
@@ -486,7 +514,7 @@ if has('patch-8.1.1564')
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
 else
-  set signcolumn=yes
+  set signcolumn=auto
 endif
 
 " Make `<tab>` used for trigger completion, completion confirm, snippet expand and jump like VSCode.

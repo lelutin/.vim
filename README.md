@@ -28,7 +28,11 @@ issues.
   * si `{cmd}` est donné, roule la commande *au lieu* d'un terminal
   * avec l'option `++no-close` en plus, le terminal sera fermé quand la
     commande se termine (comportement par défaut pour un shell)
+  * dans nvim le terminal s'ouvre dans un nouveau buffer mais dans la fenêtre
+    actuelle par défaut. il faut utiliser `:sp | ter` pour l'ouvrir dans un
+    nouveau split
 * `:vert term` :: ouvrir un terminal dans un nouveau split vertical
+  * fonctionne pas dans nvim. il faut plutôt utiliser: `:vsp | ter`
 * `:term ++curwin` :: ouvrir un terminal dans la fenêtre courante
 * `<c-w>N` :: changer au mode "normal". Super utile dans une fenêtre de terminal.
 
