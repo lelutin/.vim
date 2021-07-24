@@ -244,7 +244,7 @@ if has('nvim')
     " is a PITA to reach for
     " Just mapping <Esc> is too intrusive though since it makes escape-sequences
     " like deleting a word impossible to type.
-    tnoremap <C-w><Esc> <C-\><C-N>
+    tnoremap <C-w>n <C-\><C-N>
     " nvim doesn't enter insert mode automatically which is annoying
     autocmd TermOpen * startinsert
 
@@ -253,7 +253,7 @@ if has('nvim')
     autocmd TermClose * call feedkeys("i")
   augroup END
 else
-  tnoremap <C-w><Esc> <C-w>N
+  tnoremap <C-w>n <C-w>N
 endif
 
 " Create undo break point for c-u and c-w. this way it's possible to undo when
