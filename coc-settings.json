@@ -16,7 +16,7 @@
     "vintstyle": {
       "command": "vint",
       "debounce": 100,
-      "args": [ "--enable-neovim", "--style", "-"],
+      "args": [ "--warning", "--enable-neovim", "--style", "-"],
       "offsetLine": 0,
       "offsetColumn": 0,
       "sourceName": "vint",

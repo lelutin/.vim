@@ -488,7 +488,8 @@ nnoremap mc :call clearmatches()<CR>
 "  * coc-pyright should be accompanied by python3-flake8 and black
 "  * coc-diagnostic makes it possible to run shellcheck and vint
 "    * vint is not packaged in debian, so need to install it with pip. @note
-"      vint version 0.4a3+ is needed -- so install with `pip install --pre vint`)
+"      vint version 0.4a3+ is needed -- so install with
+"      `pip install --pre vim-vint`)
 let g:coc_global_extensions = [
   \ 'coc-sh',
   \ 'coc-json',
