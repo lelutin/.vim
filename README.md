@@ -34,7 +34,6 @@ issues.
 * `:vert term` :: ouvrir un terminal dans un nouveau split vertical
   * fonctionne pas dans nvim. il faut plutôt utiliser: `:vsp | ter`
 * `:term ++curwin` :: ouvrir un terminal dans la fenêtre courante
-* `<c-w>N` :: changer au mode "normal". Super utile dans une fenêtre de terminal.
 
 *vimrc*:
 
@@ -46,6 +45,14 @@ issues.
   répertoire que le fichier courant
 * `]f` :: ouvrir le prochain fichier en ordre alphabétique dans le même
   répertoire que le fichier courant
+
+**t-mode**:
+
+* `<c-w>N` :: dans un terminal, changer au mode "normal".
+
+*vimrc*:
+
+* `<c-w>n` :: même chose que `<c-w>N` mais sans avoir besoin de shift
 
 ## Mouvements du curseur
 
