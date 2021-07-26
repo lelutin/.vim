@@ -201,6 +201,10 @@ let g:perl_fold = 1
 let g:ruby_fold = 1
 let g:sh_fold_enabled = 7 " used as a bitfield by the syntax file. 1 = functions, 2 = heredoc, 4 = idofor
 
+" Reselect the last pasted text
+" see https://vimtricks.com/p/reselect-pasted-text/
+nnoremap gp `[v`]
+
 " Override the builtin gx command since it's doing nonsense.
 function! OpenURLUnderCursor()
   let s:uri = expand('<cWORD>')

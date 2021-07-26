@@ -77,6 +77,11 @@ issues.
 * `'$lettre` :: déplacer le curseur au début de la ligne de la marque `$lettre`
 * `` `$lettre`` :: déplacer le curseur à la position du marqueur `$lettre`
 * `g;` :: sauter vers l'emplacement du dernier changement dans le buffer
+* `gv` :: re-sélectionner la dernière sélection visuelle
+
+*vimrc*:
+
+* `gp` :: re-sélectionner le texte qui a été collé en dernier
 
 *vim-unimpaired*:
 
