@@ -12,6 +12,13 @@ However, I'll be glad to answer your questions if you have some and I can
 translate some parts if you want to know more, so don't hesitate to open
 issues.
 
+1. [Gestion de fenêtres et de tabs](#gestion-de-fenêtres-et-de-tabs)
+2. [Mouvements du curseur](#mouvements-du-curseur)
+3. [Folds](#folds)
+4. [Modifier le texte](#modifier-le-texte)
+5. [Toggle des options](#toggle-des-options)
+6. [Débugger du code](#débugger-du-code)
+
 ## Gestion de fenêtres et de tabs
 
 **n-mode**:
