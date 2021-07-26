@@ -1,0 +1,21 @@
+name: Syntax checks and lint
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    name: Lint code with Vint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+      - name: Install vint
+        run: pip install --pre vim-vint
+      - name: Lint
+        run: vint ftdetect/ ftplugin/ plugin/ spell/ syntax/ vimrc
