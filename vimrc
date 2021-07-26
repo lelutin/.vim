@@ -1,5 +1,9 @@
-set encoding=utf-8  " No, I don't want to write files as latin1
+" This is going to be buggy until https://github.com/Vimjas/vint/issues/363 is
+" fixed. Once it is, I can remove this test disabling
+" vint: -ProhibitEncodingOptionAfterScriptEncoding
+set encoding=utf-8
 scriptencoding utf-8
+" vint: +ProhibitEncodingOptionAfterScriptEncoding
 
 " This is a really cool reference:
 " https://github.com/johngrib/vimscript-cheatsheet
