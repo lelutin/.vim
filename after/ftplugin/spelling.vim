@@ -1,4 +1,5 @@
 setlocal spell
+setlocal spelllang=en
 
 " after line_numbers I know there must be a value for b:undo_ftplugin
-let b:undo_ftplugin .= ' | setlocal spell<'
+let b:undo_ftplugin .= ' | setlocal spell< | setlocal spelllang<'
