@@ -1,1 +1,1 @@
-spelling.vim
+spelling_en.vim
