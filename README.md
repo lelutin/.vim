@@ -234,6 +234,7 @@ issues.
 * `<c-j>` :: sauter à la ligne (comme enter)
 * `<c-x>s` :: modifier le mot selon une suggestion de dictionnaire. Ensuite
   utiliser `<c-n>` et `<c-p>` pour utiliser une autre suggestion
+* `<c-r>=` :: insérer le résultat d'un calcul
 
 *vim-surround*:
 
