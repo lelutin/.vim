@@ -155,6 +155,8 @@ issues.
 * `zW` :: Comme `zw` mais pas permanent
 * `zuw` / `zug` :: Undo de la commande `zw` / `zg`
 * `zuW` / `zuG` :: Undo de la commande `zW` / `zG`
+* `:<num>t.` :: Copie la ligne `<num>` sur la ligne en dessous du curseur
+* `"0p` :: Coller le dernier contenu qui a été copié
 
 *vimrc*:
 
