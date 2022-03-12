@@ -1,0 +1,7 @@
+---
+# This file should be linked to from ~/.vintrc.yaml in order to be read by vint
+
+cmdargs:
+  color: true
+  env:
+    neovim: true
