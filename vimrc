@@ -20,6 +20,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Misc functionality
+Plugin 'tpope/vim-rsi' " GNU Readline-style key bindings in insert and command mode
 Plugin 'tpope/vim-commentary' " gcc or gc<movement> to comment out lines
 Plugin 'tpope/vim-repeat' " make '.' repeat plugin commands instead of only builtins
 Plugin 'tpope/vim-sleuth' " adjust shiftwidth and expandtab according to filetype
@@ -221,18 +222,17 @@ function! OpenURLUnderCursor()
 endfunction
 nnoremap gx :call OpenURLUnderCursor()<CR>
 
+" vim-rsi avoids remapping i_CTRL-T since it's deemed too important, but I
+" don't use it and I prefer to have this functunality available in insert mode
+" as well.
+" TODO figure out if I can reuse vim-rsi's transpose() (but it's declared as
+" s:transpose() :(
+"
 " Swapping characters is way too useful and there's already <c-i> for indenting
 " This swaps the two characters placed before the cursor (e.g. behaves like
 " bash's emacs-mode <c-t>
+" XXX This is buggy at the end of line (c-o goes back one character)
 inoremap <silent> <C-t> <C-o>:normal hhxpl<CR>
-" Vim doesn't have a shortcut for going to the beginning/end of line while in
-" insert mode.. that's annoying.
-inoremap <C-e> <C-o>$
-inoremap <C-a> <C-o>0
-" Similarly, to help avoiding to leave the home keys, it's nicer to be able to
-" jump words with h and l
-inoremap <C-h> <C-o>b
-inoremap <C-l> <C-o>w
 
 if has('nvim')
   " nvim doesn't let you move to another window by default when in term-insert mode
