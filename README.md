@@ -18,6 +18,7 @@ issues.
 4. [Modifier le texte](#modifier-le-texte)
 5. [Toggle des options](#toggle-des-options)
 6. [Débugger du code](#débugger-du-code)
+7. [Références](#références)
 
 ## Gestion de fenêtres et de tabs
 
@@ -296,4 +297,9 @@ issues.
 * `,dWd` :: supprimer un watch
 
 * `<F10>` :: afficher les groupes de syntaxe sous le curseur
+
+## Références
+
+* La meilleure référence c'est bien entendu `:help` 📚
+* Quelques raccourcis intéressants dans: <https://github.com/VSCodeVim/Vim/blob/HEAD/ROADMAP.md>
 
