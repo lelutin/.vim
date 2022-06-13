@@ -147,6 +147,9 @@ issues.
 
 **n-mode**:
 
+* `dv0` :: Effacer le début de la ligne jusqu'au curseur, incluant le caractère
+    sous le curseur (e.g. le modificateur `v` ajoute l'inclusion de la position
+    sous le curseur)
 * `z=` :: Remplacer le mot par une suggestion de dictionnaire
   * avec un compteur, e.g. `1z=`, automatiquement changer pour la Nième
     suggestion
