@@ -34,6 +34,7 @@ Plugin 'farmergreg/vim-lastplace' " restore last known cursor position and open 
 " Plugin 'junegunn/fzf' " command builder using fzf for fuzzing text
 " Plugin 'junegunn/fzf.vim' " set of basic commands using fzf
 Plugin 'romainl/vim-cool' " Automatically disable hlsearch to get it out of the way
+Plugin 'mg979/vim-visual-multi' " Create multiple cursors and run commands on all of them at once.
 
 " Code syntax
 Plugin 'rodjek/vim-puppet' " puppet syntax hilighting
