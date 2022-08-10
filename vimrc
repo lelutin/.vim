@@ -187,6 +187,8 @@ set spelllang=fr
 colorscheme slate
 " fix some weaknesses of the slate color scheme. it's all too much the same
 " color
+" since vim 9.0 all schemes have a background color, which I don't want
+hi Normal ctermbg=None
 hi Comment ctermfg=DarkCyan guifg=Cyan
 hi String ctermfg=Green guifg=Green
 hi Operator ctermfg=White guifg=Black
@@ -447,7 +449,7 @@ augroup END
 " This looks better but it's pretty annoying when copying text since you'll
 " always obtain spaces up to 80 chars
 " set colorcolumn=+1
-hi ColorColumn ctermbg=black guibg=black
+"hi ColorColumn ctermbg=black guibg=black
 
 " Create new buffer and show it in a new vertical split
 nnoremap <C-W>V :vnew<CR>
