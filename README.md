@@ -18,6 +18,7 @@ issues.
 4. [Modifier le texte](#modifier-le-texte)
 5. [Toggle des options](#toggle-des-options)
 6. [Débugger du code](#débugger-du-code)
+7. [Références](#références)
 
 ## Gestion de fenêtres et de tabs
 
@@ -146,6 +147,9 @@ issues.
 
 **n-mode**:
 
+* `dv0` :: Effacer le début de la ligne jusqu'au curseur, incluant le caractère
+    sous le curseur (e.g. le modificateur `v` ajoute l'inclusion de la position
+    sous le curseur)
 * `z=` :: Remplacer le mot par une suggestion de dictionnaire
   * avec un compteur, e.g. `1z=`, automatiquement changer pour la Nième
     suggestion
@@ -296,4 +300,9 @@ issues.
 * `,dWd` :: supprimer un watch
 
 * `<F10>` :: afficher les groupes de syntaxe sous le curseur
+
+## Références
+
+* La meilleure référence c'est bien entendu `:help` 📚
+* Quelques raccourcis intéressants dans: <https://github.com/VSCodeVim/Vim/blob/HEAD/ROADMAP.md>
 
