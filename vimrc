@@ -307,6 +307,7 @@ let g:netrw_banner = 0
 " functional overall
 "let g:netrw_browse_split = 1
 let g:netrw_winsize = 25
+nnoremap <leader><space> :Ex<CR>
 
 " Make vim-cool show number of search matches
 let g:CoolTotalMatches = 1
@@ -456,8 +457,9 @@ augroup END
 nnoremap <C-W>V :vnew<CR>
 
 " Open files located in the same dir in with the current file is edited
-nnoremap <leader>ew :tabe <C-R>=expand("%:.:h") . "/"<CR>
-nnoremap <leader>Ew :e <C-R>=expand("%:.:h") . "/"<CR>
+nnoremap <leader>tw :tabe <C-R>=expand("%:.:h") . "/"<CR>
+nnoremap <leader>ew :e <C-R>=expand("%:.:h") . "/"<CR>
+nnoremap <leader>vw :vsplit <C-R>=expand("%:.:h") . "/"<CR>
 
 " See ~/.vim/plugin/strip_trailing_whitespace.vim for function definition
 nnoremap <Leader>x :<C-U>call StripTrailingWhitespace()<CR>

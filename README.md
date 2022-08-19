@@ -20,6 +20,16 @@ issues.
 6. [Débugger du code](#débugger-du-code)
 7. [Références](#références)
 
+Pour bootstrap la configuration de vim, il faut:
+
+    git clone  .vim
+    mkdir ~/.vim/bundle
+    (cd ~/.vim/bundle; git clone https://github.com/VundleVim/Vundle.vim.git)
+    vim -c "VundleInstall"
+
+Note: mon caractère `<leader>` est configuré pour être `,` mais c'est moins
+chiant d'écrire juste `,` dans les exemples
+
 ## Gestion de fenêtres et de tabs
 
 **n-mode**:
@@ -30,8 +40,9 @@ issues.
 * `<c-w>$direction` :: se déplacer vers le tab dans cette direction là (où
   `$direction` est soit i,j,k,l soit les flèches)
 * `:Vex` :: ouvrir le file browser dans un split vertical
-* `:Ex` :: ouvrir le file browser dans la fenêtre courante (p-e utiliser plus
+* `,<space>` :: ouvrir le file browser dans la fenêtre courante (p-e utiliser plus
     ça)
+  * `:Ex` :: commande équivalente
 * `:term [{cmd}]` :: ouvrir un terminal dans un nouveau split horizontal
   * si `{cmd}` est donné, roule la commande *au lieu* d'un terminal
   * avec l'option `++no-close` en plus, le terminal sera fermé quand la
@@ -164,9 +175,10 @@ issues.
 
 *vimrc*:
 
-* `,ew` :: Ouvrir un tab sur un fichier dans le même répertoire que le fichier
+* `,tw` :: Ouvrir un tab sur un fichier dans le même répertoire que le fichier
   courant
-* `,Ew` :: Editer un fichier dans la fenêtre actuelle, dans le même répertoire
+* `,ew` :: Editer un fichier dans la fenêtre actuelle, dans le même répertoire
+* `,vw` :: Ouvrir un split vertical sur un fichier dans le même répertoire
   que le fichier courant
 * `,ml` :: Ajouter un match qui highlight la ligne
 * `,mc` :: Effacer (clear) les matches (donc les highlights). Note: ça enlève
