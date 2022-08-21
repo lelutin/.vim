@@ -26,6 +26,8 @@ Pour bootstrap la configuration de vim, il faut:
     mkdir ~/.vim/bundle
     (cd ~/.vim/bundle; git clone https://github.com/VundleVim/Vundle.vim.git)
     vim -c "VundleInstall"
+    ln -s ~/.vim/vintrc.yaml ~/.vintrc.yaml
+    pip install vim-vint=0.4a3  # TODO this should be packaged in debian
 
 Note: mon caractère `<leader>` est configuré pour être `,` mais c'est moins
 chiant d'écrire juste `,` dans les exemples
