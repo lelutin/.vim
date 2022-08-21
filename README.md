@@ -28,9 +28,13 @@ Pour bootstrap la configuration de vim, il faut:
     vim -c "VundleInstall"
     ln -s ~/.vim/vintrc.yaml ~/.vintrc.yaml
     pip install vim-vint=0.4a3  # TODO this should be packaged in debian
+    vim -c "CocInstall"
 
 Note: mon caractère `<leader>` est configuré pour être `,` mais c'est moins
 chiant d'écrire juste `,` dans les exemples
+
+Pour information, coc.nvim installe ses extensions sous `~/.config/coc/` par
+défaut.
 
 ## Gestion de fenêtres et de tabs
 
