@@ -28,6 +28,7 @@ Pour bootstrap la configuration de vim, il faut:
     vim -c "VundleInstall"
     ln -s ~/.vim/vintrc.yaml ~/.vintrc.yaml
     pip install vim-vint=0.4a3  # TODO this should be packaged in debian
+    gem install solargraph
     vim -c "CocInstall"
 
 Note: mon caractère `<leader>` est configuré pour être `,` mais c'est moins
