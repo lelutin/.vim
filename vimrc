@@ -525,6 +525,11 @@ let g:coc_global_extensions = [
   \ '@yaegassy/coc-ansible',
   \]
 
+" This is required for coc-ansible
+let g:coc_filetype_map = {
+  \ 'yaml.ansible': 'ansible',
+  \ }
+
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 if has('patch-8.1.1564')
