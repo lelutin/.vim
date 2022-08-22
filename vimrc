@@ -522,6 +522,7 @@ let g:coc_global_extensions = [
   \ 'coc-git',
   \ 'coc-gitignore',
   \ 'coc-explorer',
+  \ '@yaegassy/coc-ansible',
   \]
 
 " Always show the signcolumn, otherwise it would shift the text each time
