@@ -38,6 +38,7 @@ Plugin 'mg979/vim-visual-multi' " Create multiple cursors and run commands on al
 
 " Code syntax
 Plugin 'rodjek/vim-puppet' " puppet syntax hilighting
+Plugin 'pearofducks/ansible-vim' " Make ansible playbooks look less like a bunch of all the same thing
 Plugin 'plasticboy/vim-markdown' " better markdown syntax hilighting
 Plugin 'stephpy/vim-yaml'  " better yaml syntax hilighting
 Plugin 'cespare/vim-toml'  " TOML syntax highlighting
