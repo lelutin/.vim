@@ -97,6 +97,8 @@ défaut.
 * `` `$lettre`` :: déplacer le curseur à la position du marqueur `$lettre`
 * `g;` :: sauter vers l'emplacement du dernier changement dans le buffer
 * `gv` :: re-sélectionner la dernière sélection visuelle
+* `/\%Vqqch` :: chercher `qqch` mais seulement à l'intérieur de la dernière
+  sélection visuelle
 
 *vimrc*:
 
@@ -269,6 +271,14 @@ défaut.
   indentée aussi.
 
 **v-mode**:
+
+* `o` :: bouger le curseur de l'autre côté de la zone de sélection (e.g. en
+  haut si le curseur est en bas, et inversement). On peut ensuite modifier la
+  sélection à partir de l'autre côté (e.g. ajouter des lignes vers le haut)
+* `/` :: déplacer la limite de la sélection vers le bas jusqu'au prochain match
+  de la recherche
+* `?` :: déplacer la limite de la sélection vers le haut jusqu'au prochain
+  match de la recherche
 
 *vim-speeddating*:
 
