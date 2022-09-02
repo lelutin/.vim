@@ -288,15 +288,6 @@ augroup END
 " I'm always calling this to fix puppet manifests
 nnoremap <leader><Tab> :Tabularize /=><CR>
 
-" " Some useful mappings for normal mode fzf commands
-" " TODO I never use those.. I should either trash them or make them less
-" " "top-level"
-" nnoremap <leader>b :Buffers<CR>
-" nnoremap <leader>w :Windows<CR>
-" nnoremap <leader>g :Ag<CR>
-" nnoremap <leader>m :Marks<CR>
-" nnoremap <leader>s :Snippets<CR>
-
 " TODO hmm je considere p-e plutôt utiler coc-explorer
 " Netrw (builtin file browser) configuration
 " show files in a tree
@@ -506,6 +497,10 @@ nnoremap mc :call clearmatches()<CR>
 "      vint version 0.4a3+ is needed -- so install with
 "      `pip install --pre vim-vint`)
 let g:coc_global_extensions = [
+  \ 'coc-explorer',
+  \ 'coc-lists',
+  \ 'coc-snippets',
+  \ 'coc-terminal',
   \ 'coc-sh',
   \ 'coc-json',
   \ 'coc-yaml',
@@ -517,11 +512,8 @@ let g:coc_global_extensions = [
   \ 'coc-vimlsp',
   \ 'coc-sql',
   \ 'coc-diagnostic',
-  \ 'coc-snippets',
-  \ 'coc-terminal',
   \ 'coc-git',
   \ 'coc-gitignore',
-  \ 'coc-explorer',
   \ '@yaegassy/coc-ansible',
   \]
 
@@ -571,23 +563,16 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" TODO modifier le hilight CocFloating
-" TODO changer le hilight group dans le setting coc
-" "list.previewHighlightGroup" -- ou bien ajuster le group Search pour que le
-" background ait plus d'allure
-
 " Use K to show documentation in preview window.
 " this hides the documentation provided by keywordprg >:[ -- it's weird though,
 " the function show_documentation seems to use it as a last effort.
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
   else
-    execute '!' . &keywordprg . ' ' . expand('<cword>')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
@@ -625,22 +610,18 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " endif
 
 " Mappings for CoCList
-" FIXME no a huge fan of the <space> prefix..
+" Show all lists
+nnoremap <silent><nowait> <space>l  :<C-u>CocList<CR>
 " Show all diagnostics.
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" pas besoin d'un raccourci pour ca..
-" Manage extensions.
-"nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
+" Find symbol of current document. e.g. all definitions
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" " Search workspace symbols.
-" nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" " Do default action for next item.
-" nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" " Do default action for previous item.
-" nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Fuzzy-find window and jump to it. This requires coc-lists
+nnoremap <silent><nowait> <space>w  :<C-u>CocList windows<CR>
+" Git commit graph for whole repository
+nnoremap <silent><nowait> <space>gc :<C-u>CocList commits<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
@@ -649,6 +630,5 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 let g:coc_snippet_next = '<tab>'
 
 " coc-explorer mappings
-" je considère ajouter --open-action-strategy sourceWindow
 nmap <space>e :CocCommand explorer<CR>
 
