@@ -45,7 +45,10 @@ défaut.
 * `<c-w>s` :: séparer la fenêtre à l'horizontale sur le même buffer
 * `<c-w>n` :: séparer la fenêtre à l'horizontale avec un nouveau buffer
 * `<c-w>$direction` :: se déplacer vers le tab dans cette direction là (où
-  `$direction` est soit i,j,k,l soit les flèches)
+  `$direction` est soit h,j,k,l soit les flèches)
+* `<c-w>$maj_direction` :: déplacer le buffer actif vers la portion de l'écran
+  qui correspond à la direction demandée où `$maj_direction` est un de H,J,K,L
+  (e.g. `<c-w>H` utilise "la gauche" pour le buffer actif)
 * `:Vex` :: ouvrir le file browser dans un split vertical
 * `,<space>` :: ouvrir le file browser dans la fenêtre courante (p-e utiliser plus
     ça)
