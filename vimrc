@@ -8,75 +8,66 @@ scriptencoding utf-8
 " This is a really cool reference:
 " https://github.com/johngrib/vimscript-cheatsheet
 
-" Manage plugins with Vundle. This one has the advantage over pathogen that it
-" manages the git repos itself and it'll git pull automatically when running
-" :PluginUpdate
-" After adding plugins in this list, use :PluginInstall to add the missing
-" plugins.
-filetype off "required to load vundle plugins
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
+" Manage plugins with vim-plug
+call plug#begin('~/.vim/bundle')
 
 " Misc functionality
-Plugin 'tpope/vim-rsi' " GNU Readline-style key bindings in insert and command mode
-Plugin 'tpope/vim-commentary' " gcc or gc<movement> to comment out lines
-Plugin 'tpope/vim-repeat' " make '.' repeat plugin commands instead of only builtins
-Plugin 'tpope/vim-sleuth' " adjust shiftwidth and expandtab according to filetype
-Plugin 'tpope/vim-speeddating' " ctrl-x/ctrl-a for dates
-Plugin 'tpope/vim-surround' " cs to change surrounding characters
-Plugin 'tpope/vim-unimpaired' " set of command mappings
-Plugin 'https://sanctum.geek.nz/code/vim-redact-pass.git' " companion to pass. remove all temp files and backups when editing a password file
-"Plugin 'SirVer/ultisnips' " Snippet definition plugin
-Plugin 'honza/vim-snippets' " set of snippets
-Plugin 'farmergreg/vim-lastplace' " restore last known cursor position and open folds to show content (avoid doing it for commit messages)
-" Plugin 'junegunn/fzf' " command builder using fzf for fuzzing text
-" Plugin 'junegunn/fzf.vim' " set of basic commands using fzf
-Plugin 'romainl/vim-cool' " Automatically disable hlsearch to get it out of the way
-Plugin 'mg979/vim-visual-multi' " Create multiple cursors and run commands on all of them at once.
+Plug 'tpope/vim-rsi' " GNU Readline-style key bindings in insert and command mode
+Plug 'tpope/vim-commentary' " gcc or gc<movement> to comment out lines
+Plug 'tpope/vim-repeat' " make '.' repeat plugin commands instead of only builtins
+Plug 'tpope/vim-sleuth' " adjust shiftwidth and expandtab according to filetype
+Plug 'tpope/vim-speeddating' " ctrl-x/ctrl-a for dates
+Plug 'tpope/vim-surround' " cs to change surrounding characters
+Plug 'tpope/vim-unimpaired' " set of command mappings
+Plug 'https://sanctum.geek.nz/code/vim-redact-pass.git' " companion to pass. remove all temp files and backups when editing a password file
+"Plug 'SirVer/ultisnips' " Snippet definition plugin
+Plug 'honza/vim-snippets' " set of snippets
+Plug 'farmergreg/vim-lastplace' " restore last known cursor position and open folds to show content (avoid doing it for commit messages)
+" Plug 'junegunn/fzf' " command builder using fzf for fuzzing text
+" Plug 'junegunn/fzf.vim' " set of basic commands using fzf
+Plug 'romainl/vim-cool' " Automatically disable hlsearch to get it out of the way
+Plug 'mg979/vim-visual-multi' " Create multiple cursors and run commands on all of them at once.
 
 " Code syntax
-Plugin 'rodjek/vim-puppet' " puppet syntax hilighting
-Plugin 'pearofducks/ansible-vim' " Make ansible playbooks look less like a bunch of all the same thing
-Plugin 'plasticboy/vim-markdown' " better markdown syntax hilighting
-Plugin 'stephpy/vim-yaml'  " better yaml syntax hilighting
-Plugin 'cespare/vim-toml'  " TOML syntax highlighting
+Plug 'rodjek/vim-puppet' " puppet syntax hilighting
+Plug 'pearofducks/ansible-vim' " Make ansible playbooks look less like a bunch of all the same thing
+Plug 'plasticboy/vim-markdown' " better markdown syntax hilighting
+Plug 'stephpy/vim-yaml'  " better yaml syntax hilighting
+Plug 'cespare/vim-toml'  " TOML syntax highlighting
 " also see this for potential puppet integration https://github.com/rodjek/vim-puppet/issues/125
-Plugin 'noprompt/vim-yardoc'  " colorize YARD tags and directives in ruby code
-Plugin 'aliou/bats.vim'  " BATS syntax hilighting
-"Plugin 'scrooloose/syntastic' " check syntax for current filetype
+Plug 'noprompt/vim-yardoc'  " colorize YARD tags and directives in ruby code
+Plug 'aliou/bats.vim'  " BATS syntax hilighting
+"Plug 'scrooloose/syntastic' " check syntax for current filetype
 " Code formatting
-Plugin 'godlygeek/tabular' " align text on a certain pattern
-"Plugin 'Chiel92/vim-autoformat' " use autoformatting programs to keep code tidy
+Plug 'godlygeek/tabular' " align text on a certain pattern
+"Plug 'Chiel92/vim-autoformat' " use autoformatting programs to keep code tidy
 " LSP client. for language completion, linting, formatting and syntax checking
-"Plugin 'Valloric/YouCompleteMe' " I'm installing this with the debian package to avoid having to compile it
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'Valloric/YouCompleteMe' " I'm installing this with the debian package to avoid having to compile it
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " DAP client and interface. Visual debugger for multiple languages
-Plugin 'puremourning/vimspector'  " vim debugging IDE
+Plug 'puremourning/vimspector'  " vim debugging IDE
 
 " ctags
 " j'utilise vraiment pas les ctags..
-"Plugin 'majutsushi/tagbar' " list all ctags and make it easier to navigate through them
+"Plug 'majutsushi/tagbar' " list all ctags and make it easier to navigate through them
 " Trop gossant que ca cree tout le temps un fichier tags. si j'utilise ca va
 " falloir m'arranger pour que le fichier soit nomme differemment et toujours
 " ignore de git.
-"Plugin 'ludovicchabant/vim-gutentags' " automatically update tags file
+"Plug 'ludovicchabant/vim-gutentags' " automatically update tags file
 
 " Git integration
-Plugin 'tpope/vim-fugitive' " Interact with git from vim
+Plug 'tpope/vim-fugitive' " Interact with git from vim
 
 " Interface additions/changes
-Plugin 'bling/vim-airline' " Enhanced statusbar and titlebar
-"Plugin 'scrooloose/nerdtree' " Opening a dir shows a file list
-"Plugin 'Xuyuanp/nerdtree-git-plugin' " make nerdtree show git status markers on files
-Plugin 'nathanaelkane/vim-indent-guides' " colorize indents
-Plugin 'junegunn/vim-peekaboo'  " Display registers when using " or @ commands to make it easier to choose
+Plug 'bling/vim-airline' " Enhanced statusbar and titlebar
+"Plug 'scrooloose/nerdtree' " Opening a dir shows a file list
+"Plug 'Xuyuanp/nerdtree-git-plugin' " make nerdtree show git status markers on files
+Plug 'nathanaelkane/vim-indent-guides' " colorize indents
+Plug 'junegunn/vim-peekaboo'  " Display registers when using " or @ commands to make it easier to choose
 
 "Debug/testing
-Plugin 'junegunn/vader.vim' " Used for testing vim-puppet
-call vundle#end()
-filetype plugin indent on
+Plug 'junegunn/vader.vim' " Used for testing vim-puppet
+call plug#end()
 
 syntax on
 set synmaxcol=1000   " limit syntax highlighting for long lines
