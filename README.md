@@ -22,10 +22,9 @@ issues.
 
 Pour bootstrap la configuration de vim, il faut:
 
-    git clone  .vim
+    cd; git clone git@github.com:lelutin/.vim.git
     mkdir ~/.vim/bundle
-    (cd ~/.vim/bundle; git clone https://github.com/VundleVim/Vundle.vim.git)
-    vim -c "VundleInstall"
+    vim -c "PlugInstall"
     ln -s ~/.vim/vintrc.yaml ~/.vintrc.yaml
     pip install vim-vint==0.4a3  # TODO this should be packaged in debian
     sudo gem install solargraph
