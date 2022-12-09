@@ -25,7 +25,8 @@ Pour bootstrap la configuration de vim, il faut:
     cd; git clone git@github.com:lelutin/.vim.git
     mkdir ~/.vim/bundle
     vim -c "PlugInstall"
-    ln -s ~/.vim/vintrc.yaml ~/.vintrc.yaml
+    # should already be committed to my dotfiles
+    # ln -s ~/.vim/vintrc.yaml ~/.vintrc.yaml
     pip install vim-vint==0.4a3  # TODO this should be packaged in debian
     sudo gem install solargraph
     vim -c "CocInstall"
