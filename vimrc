@@ -535,12 +535,13 @@ function! CheckBackspace() abort
 endfunction
 
 " Use <c-space> to toggle completion.
-inoremap <silent><expr> <c-@> coc#pum#visible() ? coc#pum#cancel() : coc#refresh()
+" This could be useful but I need a key combination for selecting completion.
+" I'll have to think some more what to bind this to. s-space doesn't work
+"inoremap <silent><expr> <c-@> coc#pum#visible() ? coc#pum#cancel() : coc#refresh()
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-" Note: \<C-g>u is used to break undo level.
-inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+" Make <c-space> auto-select the first completion item and notify coc.nvim to
+" format on enter
+inoremap <silent><expr> <c-@> coc#pum#visible() ? coc#_select_confirm() : " "
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
