@@ -102,6 +102,10 @@ défaut.
 * `gv` :: re-sélectionner la dernière sélection visuelle
 * `/\%Vqqch` :: chercher `qqch` mais seulement à l'intérieur de la dernière
   sélection visuelle
+* `gf` :: ouvrir en édition le nom de fichier sous le curseur, dans la même
+  fenêtre (voir ctrl-o pour revenir en arrière)
+* `<c-w>gf` :: ouvrir en édition le nom de fichier sous le curseur, dans un
+  nouveau tab
 
 *vimrc*:
 
