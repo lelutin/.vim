@@ -33,7 +33,7 @@ Plug 'godlygeek/tabular' " align text on a certain pattern -- needs to be before
 " Code syntax
 Plug 'rodjek/vim-puppet' " puppet syntax hilighting
 Plug 'pearofducks/ansible-vim' " Make ansible playbooks look less like a bunch of all the same thing
-Plug 'plasticboy/vim-markdown' " better markdown syntax hilighting
+Plug 'preservim/vim-markdown' " better markdown syntax hilighting
 Plug 'stephpy/vim-yaml'  " better yaml syntax hilighting
 Plug 'cespare/vim-toml'  " TOML syntax highlighting
 " also see this for potential puppet integration https://github.com/rodjek/vim-puppet/issues/125
