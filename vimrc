@@ -28,6 +28,8 @@ Plug 'farmergreg/vim-lastplace' " restore last known cursor position and open fo
 Plug 'romainl/vim-cool' " Automatically disable hlsearch to get it out of the way
 Plug 'mg979/vim-visual-multi' " Create multiple cursors and run commands on all of them at once.
 
+" Code formatting
+Plug 'godlygeek/tabular' " align text on a certain pattern -- needs to be before vim-markdown
 " Code syntax
 Plug 'rodjek/vim-puppet' " puppet syntax hilighting
 Plug 'pearofducks/ansible-vim' " Make ansible playbooks look less like a bunch of all the same thing
@@ -38,8 +40,6 @@ Plug 'cespare/vim-toml'  " TOML syntax highlighting
 Plug 'noprompt/vim-yardoc'  " colorize YARD tags and directives in ruby code
 Plug 'aliou/bats.vim'  " BATS syntax hilighting
 Plug 'vmware-archive/salt-vim'  " saltstack syntax highlighting
-" Code formatting
-Plug 'godlygeek/tabular' " align text on a certain pattern
 " LSP client. for language completion, linting, formatting and syntax checking
 " Plug 'Valloric/YouCompleteMe' " I'm installing this with the debian package to avoid having to compile it
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
