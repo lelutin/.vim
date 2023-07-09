@@ -188,6 +188,8 @@ défaut.
 * `zuW` / `zuG` :: Undo de la commande `zW` / `zG`
 * `:<num>t.` :: Copie la ligne `<num>` sur la ligne en dessous du curseur
 * `"0p` :: Coller le dernier contenu qui a été copié
+* `:@"` :: Après avoir copié (ou deleté) une+ ligne(s) de texte: exécuter les
+  commandes vim qui ont été copiées.
 
 *vimrc*:
 
