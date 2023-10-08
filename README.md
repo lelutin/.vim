@@ -49,6 +49,8 @@ défaut.
 * `<c-w>$maj_direction` :: déplacer le buffer actif vers la portion de l'écran
   qui correspond à la direction demandée où `$maj_direction` est un de H,J,K,L
   (e.g. `<c-w>H` utilise "la gauche" pour le buffer actif)
+* `<c-w>+ / <c-w>-` :: augmenter / diminuer le nombre de lignes (la hauteur)
+* `N<c-w>_` :: définir le nombre de lignes (la hauteur) à N lignes
 * `:Vex` :: ouvrir le file browser dans un split vertical
 * `,<space>` :: ouvrir le file browser dans la fenêtre courante (p-e utiliser plus
     ça)
