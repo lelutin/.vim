@@ -63,6 +63,7 @@ Plug 'bling/vim-airline' " Enhanced statusbar and titlebar
 "Plug 'Xuyuanp/nerdtree-git-plugin' " make nerdtree show git status markers on files
 Plug 'nathanaelkane/vim-indent-guides' " colorize indents
 Plug 'junegunn/vim-peekaboo'  " Display registers when using " or @ commands to make it easier to choose
+Plug 'jiangmiao/auto-pairs'  " automatically insert / remove matching braces
 
 "Debug/testing
 Plug 'junegunn/vader.vim' " Used for testing vim-puppet
