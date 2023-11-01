@@ -535,13 +535,11 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to toggle completion.
-" This could be useful but I need a key combination for selecting completion.
-" I'll have to think some more what to bind this to. s-space doesn't work
-"inoremap <silent><expr> <c-@> coc#pum#visible() ? coc#pum#cancel() : coc#refresh()
-
 " Make <c-space> auto-select the first completion item and notify coc.nvim to
 " format on enter
+" Using coc#refresh() instead of " " can be used to toggle the autocomplete if
+" it's not visible. However, it doesn't show up with an empty line so it's not
+" much more useful than starting to type any random letter.
 inoremap <silent><expr> <c-@> coc#pum#visible() ? coc#_select_confirm() : " "
 
 " Use `[g` and `]g` to navigate diagnostics
