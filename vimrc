@@ -431,6 +431,9 @@ augroup vimrc
   autocmd BufNewFile *.py 0r ~/.vim/templates/python.py
 augroup END
 
+" Detect playbooks properly to highlight certain ansible keywords in them.
+au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
+
 " This looks better but it's pretty annoying when copying text since you'll
 " always obtain spaces up to 80 chars
 " set colorcolumn=+1
