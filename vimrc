@@ -19,7 +19,6 @@ Plug 'tpope/vim-sleuth' " adjust shiftwidth and expandtab according to filetype
 Plug 'tpope/vim-speeddating' " ctrl-x/ctrl-a for dates
 Plug 'tpope/vim-surround' " cs to change surrounding characters
 Plug 'tpope/vim-unimpaired' " set of command mappings
-Plug 'https://sanctum.geek.nz/code/vim-redact-pass.git' " companion to pass. remove all temp files and backups when editing a password file
 "Plug 'SirVer/ultisnips' " Snippet definition plugin
 Plug 'honza/vim-snippets' " set of snippets
 Plug 'farmergreg/vim-lastplace' " restore last known cursor position and open folds to show content (avoid doing it for commit messages)
