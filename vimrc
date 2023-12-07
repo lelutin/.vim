@@ -431,7 +431,9 @@ augroup vimrc
 augroup END
 
 " Detect playbooks properly to highlight certain ansible keywords in them.
-au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
+augroup ansible
+  au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
+augroup END
 
 " This looks better but it's pretty annoying when copying text since you'll
 " always obtain spaces up to 80 chars
