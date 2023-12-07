@@ -64,6 +64,7 @@ défaut.
     nouveau split
 * `:vert term` :: ouvrir un terminal dans un nouveau split vertical
   * fonctionne pas dans nvim. il faut plutôt utiliser: `:vsp | ter`
+* `:tab term` :: ouvrir un terminal dans un nouveau tab
 * `:term ++curwin` :: ouvrir un terminal dans la fenêtre courante
 
 *vimrc*:
