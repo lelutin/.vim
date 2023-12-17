@@ -25,7 +25,7 @@ Plug 'farmergreg/vim-lastplace' " restore last known cursor position and open fo
 " Plug 'junegunn/fzf' " command builder using fzf for fuzzing text
 " Plug 'junegunn/fzf.vim' " set of basic commands using fzf
 Plug 'romainl/vim-cool' " Automatically disable hlsearch to get it out of the way
-Plug 'mg979/vim-visual-multi' " Create multiple cursors and run commands on all of them at once.
+"Plug 'mg979/vim-visual-multi' " Create multiple cursors and run commands on all of them at once.
 
 " Code formatting
 Plug 'godlygeek/tabular' " align text on a certain pattern -- needs to be before vim-markdown
@@ -62,10 +62,12 @@ Plug 'bling/vim-airline' " Enhanced statusbar and titlebar
 "Plug 'Xuyuanp/nerdtree-git-plugin' " make nerdtree show git status markers on files
 Plug 'nathanaelkane/vim-indent-guides' " colorize indents
 Plug 'junegunn/vim-peekaboo'  " Display registers when using " or @ commands to make it easier to choose
-Plug 'jiangmiao/auto-pairs'  " automatically insert / remove matching braces
+" XXX buggy, some characters can't be written and the maintainer seems to be
+" MIA, see https://github.com/jiangmiao/auto-pairs/issues/317
+"Plug 'jiangmiao/auto-pairs'  " automatically insert / remove matching braces
 
 "Debug/testing
-Plug 'junegunn/vader.vim' " Used for testing vim-puppet
+"Plug 'junegunn/vader.vim' " Used for testing vim-puppet
 call plug#end()
 
 syntax on
