@@ -3,14 +3,15 @@
     "puppet": {
       "command": "ruby",
       "args": ["/home/gabster/.vim/bundle/vimspector/gadgets/linux/cust_puppet-debugserver/puppet-languageserver","--stdio","--puppet-settings=--modulepath,/home/gabster/koumbit/control-repo/site:/home/gabster/koumbit/control-repo/modules"],
-      "cwd": "/home/gabster/.vim/bundle/vimspector/gadgets/linux",
       "filetypes": ["puppet"],
       "rootPatterns": [".git/", "metadata.json"]
     }
   },
   "python.pythonPath": "python3",
-  "python.linting.flake8Enabled": true,
-  "python.formatting.provider": "black",
+  "python.linting.ruffEnabled": true,
+  "python.formatting.provider": "ruff",
+  "pyright.organizeimports.provider": "ruff",
+  "pyright.testing.provider": "pytest",
   "vimlsp.suggest.fromRuntimepath": true,
   "diagnostic-languageserver.linters": {
     "vintstyle": {
