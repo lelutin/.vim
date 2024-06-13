@@ -191,10 +191,6 @@ hi Delimiter ctermfg=DarkMagenta guifg=Black
 " Always show the status line
 set laststatus=2
 
-" always set foldlevel to 2 to get meaningful content by default but fold more
-" complex blocks of code
-set foldlevel=2
-
 " General syntax configuration
 "
 " see more per-syntax config in after/ftplugin/*.vim
