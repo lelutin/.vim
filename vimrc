@@ -191,13 +191,6 @@ hi Delimiter ctermfg=DarkMagenta guifg=Black
 " Always show the status line
 set laststatus=2
 
-" General syntax configuration
-"
-" see more per-syntax config in after/ftplugin/*.vim
-let g:perl_fold = 1
-let g:ruby_fold = 1
-let g:sh_fold_enabled = 7 " used as a bitfield by the syntax file. 1 = functions, 2 = heredoc, 4 = idofor
-
 " Reselect the last pasted text
 " see https://vimtricks.com/p/reselect-pasted-text/
 nnoremap gp `[v`]
