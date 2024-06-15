@@ -193,7 +193,7 @@ set laststatus=2
 
 " always set foldlevel to 2 to get meaningful content by default but fold more
 " complex blocks of code
-set foldlevel=2
+set foldlevel=3
 
 " General syntax configuration
 "
