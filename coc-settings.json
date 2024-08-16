@@ -8,6 +8,11 @@
     }
   },
   "coc.preferences.formatOnSave":  true,
+  "workspace.ignoredFolders": [
+    "$HOME",
+    "$HOME/.cargo/**",
+    "$HOME/.rustup/**"
+  ],
   "python.pythonPath": "python3",
   "python.linting.ruffEnabled": true,
   "python.formatting.provider": "ruff",

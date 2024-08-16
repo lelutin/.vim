@@ -512,6 +512,7 @@ let g:coc_global_extensions = [
   \ 'coc-git',
   \ 'coc-gitignore',
   \ '@yaegassy/coc-ansible',
+  \ 'coc-rust-analyzer',
   \]
 
 " This is required for coc-ansible

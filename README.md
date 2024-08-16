@@ -51,6 +51,9 @@ Pour bootstrap la configuration de vim, il faut:
     cd !$
     bundle config set --local path '~/.gem'
     bundle install && bundle exec rake gem_revendor
+    # Install rust-related tools used by coc-rust-analyzer
+    # rust-src needed for the analyzer to do its thing
+    sudo apt install rust-src rustfmt
     #
     # Install CoC plugins
     vim -c "CocInstall"
