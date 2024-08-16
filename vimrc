@@ -541,8 +541,7 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Make <c-space> auto-select the first completion item and notify coc.nvim to
-" format on enter
+" Make <c-space> auto-select the first completion item
 " Using coc#refresh() instead of " " can be used to toggle the autocomplete if
 " it's not visible. However, it doesn't show up with an empty line so it's not
 " much more useful than starting to type any random letter.
