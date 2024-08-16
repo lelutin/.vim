@@ -25,11 +25,33 @@ Pour bootstrap la configuration de vim, il faut:
     cd; git clone git@github.com:lelutin/.vim.git
     mkdir ~/.vim/bundle
     vim -c "PlugInstall"
-    # should already be committed to my dotfiles
-    # ln -s ~/.vim/vintrc.yaml ~/.vintrc.yaml
+    # Install linter for vimscript
     pip install --break-system-packages vim-vint==0.4a3  # TODO this should be packaged in debian
-    sudo gem install solargraph
+    # this should already be committed to my dotfiles
+    #     ln -s ~/.vim/vintrc.yaml ~/.vintrc.yaml
+    # The CoC config shuold already be in my dotfiles. For details, see section
+    # below
+    #
+    # Install gem used by coc-ruby
+    sudo gem install solargraph  # TODO this too should be packaged in debian
+    # Install puppet-editor-services for vimspector + coc.vim
+    # first, make sure to remove the puppet-agent debian package -- having it installed twice on
+    # the machine will cause trouble for our local install
+    #   XXX that should get packaged and installed system-wide. but it's most
+    #   probably a PITA to do since they vendor a bunch of stuff
+    cd ~/.vim/bundle/vimspector
+    mkdir -p gadgets/linux
+    cd !$
+    git clone https://github.com/puppetlabs/puppet-editor-services.git cust_puppet-debugserver
+    cd !$
+    bundle config set --local path '~/.gem'
+    bundle install && bundle exec rake gem_revendor
+    # The CoC config should already be committed to my dotfiles. For details
+    # see section below
+    #
+    # Install CoC plugins
     vim -c "CocInstall"
+
 
 Note: mon caractère `<leader>` est configuré pour être `,` mais c'est moins
 chiant d'écrire juste `,` dans les exemples
@@ -353,3 +375,50 @@ défaut.
 * La meilleure référence c'est bien entendu `:help` 📚
 * Quelques raccourcis intéressants dans: <https://github.com/VSCodeVim/Vim/blob/HEAD/ROADMAP.md>
 
+## Appendice
+
+### Configurations pour CoC.vim
+
+#### vint
+
+Depend du plugin `coc-diagnostic`. Ajouter ça à la config:
+
+    "vimlsp.suggest.fromRuntimepath": true,
+    "diagnostic-languageserver.linters": {
+      "vintstyle": {
+        "command": "vint",
+        "debounce": 100,
+        "args": [ "--warning", "--enable-neovim", "--style", "-"],
+        "offsetLine": 0,
+        "offsetColumn": 0,
+        "sourceName": "vint",
+        "formatLines": 1,
+        "formatPattern": [
+          "[^:]+:(\\d+):(\\d+):\\s*(.*)(\\r|\\n)*$",
+          {
+            "line": 1,
+            "column": 2,
+            "message": 3
+          }
+        ]
+      }
+    },
+    "diagnostic-languageserver.filetypes": {
+      "vim": "vintstyle"
+    },
+
+#### Puppet
+
+Ajouter ça à la config. Attention: le chemin vers `puppet-languageserver` a
+*besoin* d'être un chemin absolu sinon CoC n'est pas capable de le lancer. Bien
+entendu, ajuster le chemin pour `modulepath` ou encore retirer complètement
+l'option `--puppet-settings`:
+
+    "languageserver": {
+      "puppet": {
+        "command": "ruby",
+        "args": ["/home/gabster/.vim/bundle/vimspector/gadgets/linux/cust_puppet-debugserver/puppet-languageserver","--stdio","--puppet-settings=--modulepath,~/dev/puppet/"],
+        "filetypes": ["puppet"],
+        "rootPatterns": [".git/", "metadata.json"]
+      }
+    },
