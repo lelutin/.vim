@@ -7,6 +7,7 @@
       "rootPatterns": [".git/", "metadata.json"]
     }
   },
+  "coc.preferences.formatOnSave":  true,
   "python.pythonPath": "python3",
   "python.linting.ruffEnabled": true,
   "python.formatting.provider": "ruff",
