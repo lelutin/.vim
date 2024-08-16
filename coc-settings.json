@@ -2,7 +2,7 @@
   "languageserver": {
     "puppet": {
       "command": "ruby",
-      "args": ["/home/gabster/.vim/bundle/vimspector/gadgets/linux/cust_puppet-debugserver/puppet-languageserver","--stdio","--puppet-settings=--modulepath,/home/gabster/koumbit/control-repo/site:/home/gabster/koumbit/control-repo/modules"],
+      "args": ["/home/gabster/.vim/bundle/vimspector/gadgets/linux/cust_puppet-debugserver/puppet-languageserver","--stdio","--puppet-settings=--modulepath,~/dev/puppet/"],
       "filetypes": ["puppet"],
       "rootPatterns": [".git/", "metadata.json"]
     }
