@@ -643,7 +643,7 @@ nmap <space>e :CocCommand explorer<CR>
 
 " vim-test mappings
 if has('nvim')
-  let test#strategy='neovim'
+  let test#strategy='neovim_sticky'
 else
   let test#strategy='vimterminal'
 endif
