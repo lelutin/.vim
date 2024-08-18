@@ -301,7 +301,7 @@ défaut.
 *coc.vim*:
 
 * `<c-space>` :: toggle la complétion de coc.vim
-* `<cr>` :: quand la complétion est activée: accepter la sélection ou
+* `<c-y>` :: quand la complétion est activée: accepter la sélection ou
   sélectionner le premier choix.
 
 **v-mode**:

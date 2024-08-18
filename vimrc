@@ -148,9 +148,6 @@ if ! has('nvim')
   set viminfofile=~/.local/share/vim/viminfo
 endif
 
-" get completion 'info' into a popup instead of the preview window
-set completeopt = 'menu,popup'
-
 " change leader character to comma so that it's more accessible
 let mapleader = ','
 
@@ -554,12 +551,6 @@ function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Make <c-space> auto-select the first completion item
-" Using coc#refresh() instead of " " can be used to toggle the autocomplete if
-" it's not visible. However, it doesn't show up with an empty line so it's not
-" much more useful than starting to type any random letter.
-inoremap <silent><expr> <c-@> coc#pum#visible() ? coc#_select_confirm() : " "
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
