@@ -34,10 +34,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': {-> coc#util#update_extens
 " TODO I'm using this only for puppet code. If there could be some
 " auto-formatting via coc.nvim I could remove this plugin.
 Plug 'godlygeek/tabular' " align text on a certain pattern -- needs to be before vim-markdown
-Plug 'LunarWatcher/auto-pairs' " automatically add matching closing symbol while typing
-" same thing as above but in lua for nvim. couldn't get it to work with the
-" vimrc file though
-"Plug 'windwp/nvim-autopairs'
+Plug 'windwp/nvim-autopairs'
 
 " ---- Code syntax
 Plug 'rodjek/vim-puppet' " puppet syntax hilighting
@@ -644,3 +641,11 @@ nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-a> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-v> :TestVisit<CR>
+
+" Initial setup for nvim-autopairs
+" Weirdly, I can't indent the block inside the if or the vimrc parsing crashes
+if has('nvim')
+lua << EOF
+require('nvim-autopairs').setup {}
+EOF
+endif
