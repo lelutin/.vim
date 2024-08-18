@@ -61,6 +61,7 @@ Plug 'junegunn/vim-peekaboo'  " Display registers when using " or @ commands to 
 "Plug 'junegunn/vader.vim' " Used for testing vim-puppet
 " DAP client and interface. Visual debugger for multiple languages
 Plug 'puremourning/vimspector', {'do': {-> vimspector#Update('')}} " vim debugging IDE. needs DAP servers installed
+Plug 'vim-test/vim-test' " easily run tests with code files still around
 call plug#end()
 
 syntax on
@@ -640,3 +641,15 @@ let g:coc_snippet_next = '<tab>'
 " coc-explorer mappings
 nmap <space>e :CocCommand explorer<CR>
 
+" vim-test mappings
+if has('nvim')
+  let test#strategy='neovim'
+else
+  let test#strategy='vimterminal'
+endif
+
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-a> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-v> :TestVisit<CR>
