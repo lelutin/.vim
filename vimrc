@@ -11,7 +11,7 @@ scriptencoding utf-8
 " Manage plugins with vim-plug
 call plug#begin('~/.vim/bundle')
 
-" Misc functionality
+" ---- Misc functionality
 Plug 'tpope/vim-rsi' " GNU Readline-style key bindings in insert and command mode
 Plug 'tpope/vim-commentary' " gcc or gc<movement> to comment out lines
 Plug 'tpope/vim-repeat' " make '.' repeat plugin commands instead of only builtins
@@ -21,15 +21,25 @@ Plug 'tpope/vim-surround' " cs to change surrounding characters
 Plug 'tpope/vim-unimpaired' " set of command mappings
 "Plug 'SirVer/ultisnips' " Snippet definition plugin
 Plug 'honza/vim-snippets' " set of snippets
+" XXX the next one does not seem to work with nvim
 Plug 'farmergreg/vim-lastplace' " restore last known cursor position and open folds to show content (avoid doing it for commit messages)
 " Plug 'junegunn/fzf' " command builder using fzf for fuzzing text
 " Plug 'junegunn/fzf.vim' " set of basic commands using fzf
 Plug 'romainl/vim-cool' " Automatically disable hlsearch to get it out of the way
-"Plug 'mg979/vim-visual-multi' " Create multiple cursors and run commands on all of them at once.
 
-" Code formatting
+" ---- Code formatting
+" LSP client: for language completion, linting, formatting, syntax checking and
+" automatic fixes
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" TODO I'm using this only for puppet code. If there could be some
+" auto-formatting via coc.nvim I could remove this plugin.
 Plug 'godlygeek/tabular' " align text on a certain pattern -- needs to be before vim-markdown
-" Code syntax
+Plug 'LunarWatcher/auto-pairs' " automatically add matching closing symbol while typing
+" same thing as above but in lua for nvim. couldn't get it to work with the
+" vimrc file though
+"Plug 'windwp/nvim-autopairs'
+
+" ---- Code syntax
 Plug 'rodjek/vim-puppet' " puppet syntax hilighting
 Plug 'pearofducks/ansible-vim' " Make ansible playbooks look less like a bunch of all the same thing
 Plug 'preservim/vim-markdown' " better markdown syntax hilighting
@@ -38,35 +48,19 @@ Plug 'cespare/vim-toml'  " TOML syntax highlighting
 " also see this for potential puppet integration https://github.com/rodjek/vim-puppet/issues/125
 Plug 'noprompt/vim-yardoc'  " colorize YARD tags and directives in ruby code
 Plug 'aliou/bats.vim'  " BATS syntax hilighting
-" LSP client. for language completion, linting, formatting and syntax checking
-" Plug 'Valloric/YouCompleteMe' " I'm installing this with the debian package to avoid having to compile it
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" DAP client and interface. Visual debugger for multiple languages
-Plug 'puremourning/vimspector'  " vim debugging IDE
-
-" ctags
-" j'utilise vraiment pas les ctags..
-"Plug 'majutsushi/tagbar' " list all ctags and make it easier to navigate through them
-" Trop gossant que ca cree tout le temps un fichier tags. si j'utilise ca va
-" falloir m'arranger pour que le fichier soit nomme differemment et toujours
-" ignore de git.
-"Plug 'ludovicchabant/vim-gutentags' " automatically update tags file
 
 " Git integration
 Plug 'tpope/vim-fugitive' " Interact with git from vim
 
 " Interface additions/changes
 Plug 'bling/vim-airline' " Enhanced statusbar and titlebar
-"Plug 'scrooloose/nerdtree' " Opening a dir shows a file list
-"Plug 'Xuyuanp/nerdtree-git-plugin' " make nerdtree show git status markers on files
 Plug 'nathanaelkane/vim-indent-guides' " colorize indents
 Plug 'junegunn/vim-peekaboo'  " Display registers when using " or @ commands to make it easier to choose
-" XXX buggy, some characters can't be written and the maintainer seems to be
-" MIA, see https://github.com/jiangmiao/auto-pairs/issues/317
-"Plug 'jiangmiao/auto-pairs'  " automatically insert / remove matching braces
 
-"Debug/testing
+" ---- Debug/testing
 "Plug 'junegunn/vader.vim' " Used for testing vim-puppet
+" DAP client and interface. Visual debugger for multiple languages
+Plug 'puremourning/vimspector' " vim debugging IDE. needs DAP servers installed
 call plug#end()
 
 syntax on
