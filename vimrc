@@ -61,6 +61,7 @@ Plug 'junegunn/vim-peekaboo'  " Display registers when using " or @ commands to 
 "Plug 'junegunn/vader.vim' " Used for testing vim-puppet
 " DAP client and interface. Visual debugger for multiple languages
 Plug 'puremourning/vimspector', {'do': {-> vimspector#Update('')}} " vim debugging IDE. needs DAP servers installed
+" alternative for nvim: https://github.com/mfussenegger/nvim-dap
 Plug 'vim-test/vim-test' " easily run tests with code files still around
 call plug#end()
 
@@ -148,7 +149,7 @@ if ! has('nvim')
 endif
 
 " get completion 'info' into a popup instead of the preview window
-set completeopt = "menu,popup"
+set completeopt = 'menu,popup'
 
 " change leader character to comma so that it's more accessible
 let mapleader = ','
@@ -248,7 +249,7 @@ if has('nvim')
 
     " nvim doesn't let users automatically close the window when the shell exits
     " this is a workaround to avoid needing to press something
-    autocmd TermClose * call feedkeys("i")
+    autocmd TermClose * call feedkeys('i')
   augroup END
 else
   tnoremap <C-w>n <C-w>N
@@ -324,18 +325,18 @@ let g:vimspector_base_dir = expand('$HOME/.local/lib/vimspector')
 " only install those builtin gadgets
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-bash-debug', 'puppet-editor-services' ]
 let g:vimspector_configurations = {
-  \  "puppet": {
-  \    "default": "true",
-  \    "adapter": "puppet-editor-services",
-  \    "filetypes": [ "puppet", "embeddedpuppet" ],
-  \    "configuration": {
-  \      "request": "launch",
-  \      "manifest": "${file}",
-  \      "args": [
-  \        "--noop",
-  \        "--verbose",
-  \        "--modulepath",
-  \        "~/dev/puppet"
+  \  'puppet': {
+  \    'default': 'true',
+  \    'adapter': 'puppet-editor-services',
+  \    'filetypes': [ 'puppet', 'embeddedpuppet' ],
+  \    'configuration': {
+  \      'request': 'launch',
+  \      'manifest': '${file}',
+  \      'args': [
+  \        '--noop',
+  \        '--verbose',
+  \        '--modulepath',
+  \        '~/dev/puppet'
   \      ]
   \    }
   \  }
@@ -406,7 +407,6 @@ nnoremap <leader>dWd :call vimspector#DeleteWatch()<CR>
 let g:airline#extensions#tabline#enabled = 1    " Show buffers when there's only one tab
 let g:airline_powerline_fonts = 1               " use powerline fonts. apparently utf8 symbols don't show up right
 let g:airline#extensions#whitespace#enabled = 0 " pesky whitespace detection
-"let g:airline#extensions#gutentags#enabled = 1  " Show gutentag ctags generation progress
 
 " Add syntax-based matching for %
 packadd! matchit
@@ -468,9 +468,9 @@ nnoremap <Leader>x :<C-U>call StripTrailingWhitespace()<CR>
 
 " Obscure shortcut, helpful for debugging syntax hilighting.
 " Show syntax hilighting group under cursor
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+map <F10> :echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<'
+\ . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<'
+\ . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>'<CR>
 
 " Indent Guides
 "
