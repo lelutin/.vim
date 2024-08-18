@@ -30,7 +30,7 @@ Plug 'romainl/vim-cool' " Automatically disable hlsearch to get it out of the wa
 " ---- Code formatting
 " LSP client: for language completion, linting, formatting, syntax checking and
 " automatic fixes
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': {-> coc#util#update_extensions()()} }
 " TODO I'm using this only for puppet code. If there could be some
 " auto-formatting via coc.nvim I could remove this plugin.
 Plug 'godlygeek/tabular' " align text on a certain pattern -- needs to be before vim-markdown
@@ -60,7 +60,7 @@ Plug 'junegunn/vim-peekaboo'  " Display registers when using " or @ commands to 
 " ---- Debug/testing
 "Plug 'junegunn/vader.vim' " Used for testing vim-puppet
 " DAP client and interface. Visual debugger for multiple languages
-Plug 'puremourning/vimspector' " vim debugging IDE. needs DAP servers installed
+Plug 'puremourning/vimspector', {'do': {-> vimspector#Update('')}} " vim debugging IDE. needs DAP servers installed
 call plug#end()
 
 syntax on

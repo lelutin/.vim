@@ -46,11 +46,6 @@ Pour bootstrap la configuration de vim, il faut:
     # Install rust-related tools used by coc-rust-analyzer
     # rust-src needed for the analyzer to do its thing
     sudo apt install rust-src rustfmt
-    #
-    # Install vimspector gadgets (DAP servers)
-    vim -c "VimspectorInstall"
-    # Install CoC plugins
-    vim -c "CocInstall"
 
 Note: mon caractère `<leader>` est configuré pour être `,` mais c'est moins
 chiant d'écrire juste `,` dans les exemples
