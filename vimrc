@@ -317,9 +317,28 @@ nmap <silent> <leader>é  <Plug>LocationNext
 " installed?
 "let g:syntastic_yaml_checkers = ['yamllint']
 
-" Make VimspectorInstall behave in a more predictable way (e.g. only install those builtin gadgets (custom gadgets
-" will always be installed)
-let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-bash-debug' ]
+" Make VimspectorInstall behave in a more predictable way:
+" Don't install stuff underneath the plugin bundle
+let g:vimspector_base_dir = expand('$HOME/.local/lib/vimspector')
+" only install those builtin gadgets
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-bash-debug', 'puppet-editor-services' ]
+let g:vimspector_configurations = {
+  \  "puppet": {
+  \    "default": "true",
+  \    "adapter": "puppet-editor-services",
+  \    "filetypes": [ "puppet", "embeddedpuppet" ],
+  \    "configuration": {
+  \      "request": "launch",
+  \      "manifest": "${file}",
+  \      "args": [
+  \        "--noop",
+  \        "--verbose",
+  \        "--modulepath",
+  \        "~/dev/puppet"
+  \      ]
+  \    }
+  \  }
+  \}
 
 " Create some mappings for the vimspector debugger. I don't particularly like
 " the default mappings since they make you go to the F* keys and that's far

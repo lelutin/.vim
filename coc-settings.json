@@ -2,12 +2,22 @@
   "languageserver": {
     "puppet": {
       "command": "ruby",
-      "args": ["/home/gabster/.vim/bundle/vimspector/gadgets/linux/cust_puppet-debugserver/puppet-languageserver","--stdio","--puppet-settings=--modulepath,~/dev/puppet/"],
-      "filetypes": ["puppet"],
-      "rootPatterns": [".git/", "metadata.json"]
+      "args": [
+        "/home/gabster/.local/lib/vimspector/gadgets/linux/puppet-editor-services/puppet-languageserver",
+        "--stdio",
+        "--puppet-settings=--modulepath,~/dev/puppet/"
+      ],
+      "filetypes": [
+        "puppet",
+        "embeddedpuppet"
+      ],
+      "rootPatterns": [
+        ".git/",
+        "metadata.json"
+      ]
     }
   },
-  "coc.preferences.formatOnSave":  true,
+  "coc.preferences.formatOnSave": true,
   "workspace.ignoredFolders": [
     "$HOME",
     "$HOME/.cargo/**",
@@ -23,7 +33,12 @@
     "vintstyle": {
       "command": "vint",
       "debounce": 100,
-      "args": [ "--warning", "--enable-neovim", "--style", "-"],
+      "args": [
+        "--warning",
+        "--enable-neovim",
+        "--style",
+        "-"
+      ],
       "offsetLine": 0,
       "offsetColumn": 0,
       "sourceName": "vint",

@@ -30,7 +30,8 @@ Pour bootstrap la configuration de vim, il faut:
     # sections at the end of the file.
     #
     # Install linter for vimscript
-    pip install --break-system-packages vim-vint==0.4a3  # TODO this should be packaged in debian
+    # TODO this is evil. the thing should be packaged in debian
+    pip install --break-system-packages vim-vint==0.4a3
     # this should already be committed to my dotfiles
     #     ln -s ~/.vim/vintrc.yaml ~/.vintrc.yaml
     #
@@ -38,27 +39,18 @@ Pour bootstrap la configuration de vim, il faut:
     sudo apt install shfmt
     # Install gem used by coc-ruby
     sudo gem install solargraph  # TODO this too should be packaged in debian
-    # puppet LSP server. can also be used with vimspector for debugging
-    # first, make sure to remove the puppet-agent debian package -- having it installed twice on
-    # the machine will cause trouble for our local install
+    # the puppet LSP server ships its own vendored puppet, so we need to make
+    # sure to remove the puppet-agent debian package -- having it installed
+    # twice on the machine will cause trouble for our local install
     sudo apt remove puppet-agent
-    # XXX that should get packaged and installed system-wide. but it's most
-    #   probably a PITA to do since they vendor a bunch of stuff
-    cd ~/.vim/bundle/vimspector
-    mkdir -p gadgets/linux
-    cd !$
-    git clone https://github.com/puppetlabs/puppet-editor-services.git cust_puppet-debugserver
-    cd !$
-    bundle config set --local path '~/.gem'
-    bundle install && bundle exec rake gem_revendor
     # Install rust-related tools used by coc-rust-analyzer
     # rust-src needed for the analyzer to do its thing
     sudo apt install rust-src rustfmt
     #
+    # Install vimspector gadgets (DAP servers)
+    vim -c "VimspectorInstall"
     # Install CoC plugins
     vim -c "CocInstall"
-    # Install vimspector gadgets (DAP servers)
-    vim -c "VimspectorInstall debugpy vscode-bash-debug"
 
 Note: mon caractère `<leader>` est configuré pour être `,` mais c'est moins
 chiant d'écrire juste `,` dans les exemples
