@@ -38,7 +38,6 @@ Plug 'cespare/vim-toml'  " TOML syntax highlighting
 " also see this for potential puppet integration https://github.com/rodjek/vim-puppet/issues/125
 Plug 'noprompt/vim-yardoc'  " colorize YARD tags and directives in ruby code
 Plug 'aliou/bats.vim'  " BATS syntax hilighting
-Plug 'vmware-archive/salt-vim'  " saltstack syntax highlighting
 " LSP client. for language completion, linting, formatting and syntax checking
 " Plug 'Valloric/YouCompleteMe' " I'm installing this with the debian package to avoid having to compile it
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
