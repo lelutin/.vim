@@ -57,6 +57,8 @@ Pour bootstrap la configuration de vim, il faut:
     #
     # Install CoC plugins
     vim -c "CocInstall"
+    # Install vimspector gadgets (DAP servers)
+    vim -c "VimspectorInstall debugpy vscode-bash-debug"
 
 Note: mon caractère `<leader>` est configuré pour être `,` mais c'est moins
 chiant d'écrire juste `,` dans les exemples
