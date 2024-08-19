@@ -82,6 +82,7 @@ set guioptions-=T   " Disable the toolbar in the GUI
 
 set wildmenu        " Show a list of <tab> suggestions while in command mode
 set wildmode=list:longest
+set wildoptions=fuzzy
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
