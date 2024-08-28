@@ -55,7 +55,6 @@ Plug 'nathanaelkane/vim-indent-guides' " colorize indents
 Plug 'junegunn/vim-peekaboo'  " Display registers when using " or @ commands to make it easier to choose
 
 " ---- Debug/testing
-"Plug 'junegunn/vader.vim' " Used for testing vim-puppet
 " DAP client and interface. Visual debugger for multiple languages
 Plug 'puremourning/vimspector', {'do': {-> vimspector#Update('')}} " vim debugging IDE. needs DAP servers installed
 " alternative for nvim: https://github.com/mfussenegger/nvim-dap
