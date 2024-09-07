@@ -23,7 +23,6 @@ Plug 'tpope/vim-unimpaired' " set of command mappings
 Plug 'farmergreg/vim-lastplace' " restore last known cursor position and open folds to show content (avoid doing it for commit messages)
 " Plug 'junegunn/fzf' " command builder using fzf for fuzzing text
 " Plug 'junegunn/fzf.vim' " set of basic commands using fzf
-Plug 'romainl/vim-cool' " Automatically disable hlsearch to get it out of the way
 
 " ---- Code formatting
 " LSP client: for language completion, linting, formatting, syntax checking and
@@ -147,29 +146,18 @@ hi Operator ctermfg=White guifg=Black
 hi Delimiter ctermfg=DarkMagenta guifg=Black
 hi LineNrAbove ctermfg=DarkGray
 hi LineNrBelow ctermfg=DarkGray
-hi LineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
-
-" Override the builtin gx command since it's doing nonsense.
-function! OpenURLUnderCursor()
-  let s:uri = expand('<cWORD>')
-  let s:uri = substitute(s:uri, '?', '\\?', '')
-  let s:uri = shellescape(s:uri, 1)
-  if s:uri != ''
-    silent exec "!gio open '".s:uri."'"
-    :redraw!
-  endif
-endfunction
-nnoremap gx :call OpenURLUnderCursor()<CR>
+hi LineNr term=bold ctermfg=White gui=bold guifg=Yellow
 
 " vim-rsi avoids remapping i_CTRL-T since it's deemed too important, but I
 " don't use it and I prefer to have this functunality available in insert mode
 " as well.
-" TODO figure out if I can reuse vim-rsi's transpose() (but it's declared as
-" s:transpose() :(
 "
 " Swapping characters is way too useful and there's already <c-i> for indenting
 " This swaps the two characters placed before the cursor (e.g. behaves like
 " bash's emacs-mode <c-t>
+" TODO vim-rsi's s:transpose() function is script-local but also it's not
+" formatted for use with an <expr> mapping in i mode. I could possibly reuse
+" the structure though
 " XXX This is buggy at the end of line (c-o goes back one character)
 inoremap <silent> <C-t> <C-o>:normal hhxpl<CR>
 
@@ -186,16 +174,6 @@ else
   tnoremap <C-n> <C-w>N
 endif
 
-" Create undo break point for c-u and c-w. this way it's possible to undo when
-" I make a mistake. Without this, undo would remove everything that was typed
-" while in insert mode!
-if empty(mapcheck('<C-U>', 'i'))
-  inoremap <C-U> <C-G>u<C-U>
-endif
-if empty(mapcheck('<C-W>', 'i'))
-  inoremap <C-W> <C-G>u<C-W>
-endif
-
 " Additional character replacements for surround.vim
 augroup vimrc_surround
   au FileType embeddedpuppet let b:surround_45 = "<%- \r -%>"
@@ -203,36 +181,10 @@ augroup vimrc_surround
   au FileType embeddedpuppet let b:surround_61 = "<%= \r %>"
 augroup END
 
-" Make vim-cool show number of search matches
-let g:CoolTotalMatches = 1
-
 " activate some more markdown features
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_strikethrough = 1
 let g:vim_markdown_new_list_item_indent = 2
-
-" Location list navigation
-"
-" Use mappings from plugin/location_wrap to make it easier to move in the
-" location list while wrapping around the edges
-"
-" See ~/.vim/plugin/location_wrap.vim
-"
-nmap <silent> <leader>É  <Plug>LocationPrevious
-nmap <silent> <leader>é  <Plug>LocationNext
-
-" Syntastic configuration
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1 " This one's annoying when opening a large file like koumbit's nodes.pp
-"let g:syntastic_check_on_wq = 0
-" check python syntax with py3. this will become useless once py3 becomes
-" default
-"let g:syntastic_python_python_exec = 'python3'
-
-" why is this necessary.. couldn't it just figure out that I have yamllint
-" installed?
-"let g:syntastic_yaml_checkers = ['yamllint']
 
 " Airline configuration
 let g:airline#extensions#tabline#enabled = 1    " Show buffers when there's only one tab
@@ -240,15 +192,9 @@ let g:airline_powerline_fonts = 1               " use powerline fonts. apparentl
 let g:airline#extensions#whitespace#enabled = 0 " pesky whitespace detection
 
 augroup vimrc
-  " TODO: not sure how to push this out to a plugin in ~/.vim ...
   " Show trailing whitepaces and leading mixed tabs + spaces:
   autocmd Syntax * syn match ErrorMsg /\s\+$\|^ \+\ze\t\|^\t\+\ze / containedin=ALL
 
-  " TODO: not sure how to push this out to a plugin in ~/.vim ...
-  " Cleanup fugitive buffers as I leave them to avoid clutter.
-  autocmd BufReadPost fugitive://* set bufhidden=delete
-
-  " TODO: not sure how to push this out to a plugin in ~/.vim ...
   " Highlight first column beyond the 120th one (hilighting more columns is
   " disruptive). 80 is short and I can deal with cases that complain about
   " lines longer than 80 when it happens. I randomly chose 120 to have more
@@ -274,18 +220,10 @@ augroup ansible
   au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 augroup END
 
-" This looks better but it's pretty annoying when copying text since you'll
-" always obtain spaces up to 80 chars
-" set colorcolumn=+1
-"hi ColorColumn ctermbg=black guibg=black
-
 " Open files located in the same dir in with the current file is edited
 nnoremap <leader>tw :tabe <C-R>=expand("%:.:h") . "/"<CR>
 nnoremap <leader>ew :e <C-R>=expand("%:.:h") . "/"<CR>
 nnoremap <leader>vw :vsplit <C-R>=expand("%:.:h") . "/"<CR>
-
-" See ~/.vim/plugin/strip_trailing_whitespace.vim for function definition
-nnoremap <Leader>x :<C-U>call StripTrailingWhitespace()<CR>
 
 " Obscure shortcut, helpful for debugging syntax hilighting.
 " Show syntax hilighting group under cursor
@@ -297,17 +235,6 @@ map <F10> :echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans
 "
 " Enable indentation coloring for easier visual reference
 let g:indent_guides_enable_on_vim_startup = 1
-
-" define highlight color for marking certain lines
-highlight LineHighlight ctermbg=darkgray guibg=darkgray
-
-" highlight (match) the current line
-" Note that this line won't follow changes in the file. If it becomes annoying
-" I could always use https://github.com/inkarkat/vim-mark instead
-nnoremap <leader>ml :call matchadd('LineHighlight', '\%'.line('.').'l')<CR>
-
-" clear all the matches (so also highlighted lines)
-nnoremap <leader>mc :call clearmatches()<CR>
 
 " coc.vim configuration
 "
@@ -322,20 +249,16 @@ nnoremap <leader>mc :call clearmatches()<CR>
 let g:coc_global_extensions = [
   \ 'coc-explorer',
   \ 'coc-lists',
-  \ 'coc-terminal',
+  \ 'coc-git',
   \ 'coc-sh',
   \ 'coc-json',
   \ 'coc-yaml',
   \ 'coc-solargraph',
   \ 'coc-pyright',
-  \ 'coc-phpls',
   \ 'coc-perl',
   \ 'coc-markdownlint',
   \ 'coc-vimlsp',
-  \ 'coc-sql',
   \ 'coc-diagnostic',
-  \ 'coc-git',
-  \ 'coc-gitignore',
   \ '@yaegassy/coc-ansible',
   \ 'coc-rust-analyzer',
   \]
@@ -402,26 +325,10 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
-" XXX I'm not sure there's any language server that supports this :\
 nmap <leader>qf  <Plug>(coc-fix-current)
-
-" " Remap <C-f> and <C-b> for scroll float windows/popups.
-" if has('nvim-0.4.0') || has('patch-8.2.0750')
-"   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-"   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-"   inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-"   inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-"   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-"   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-" endif
 
 " Mappings for CoCList
 " Show all lists
@@ -434,8 +341,6 @@ nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Fuzzy-find window and jump to it. This requires coc-lists
 nnoremap <silent><nowait> <space>w  :<C-u>CocList windows<CR>
-" Git commit graph for whole repository
-nnoremap <silent><nowait> <space>gc :<C-u>CocList commits<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 

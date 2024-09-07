@@ -92,6 +92,12 @@ défaut.
 *vimrc*:
 
 * `<space>e` :: toggle la fenêtre du file browser de coc-explorer
+* `<space>l` :: afficher une liste de toutes les listes CoC
+* `<space>a` :: ouvrir une liste des diagnostiques avec fuzzy search
+* `<space>c` :: afficher une liste des commandes CoC
+* `<space>o` :: afficher un "outline" du code dans le buffer
+* `<space>w` :: afficher une liste des fenêtres vim avec fuzzy search
+* `<space>p` :: réouvrir une liste qui a été fermée avant
 
 **t-mode**:
 
@@ -145,7 +151,7 @@ défaut.
 *coc.nvim*:
 
 * `[g` :: aller au diagnostique précédent (boucle au début)
-* `[G` :: aller au diagnostique suivant (boucle à la fin)
+* `]g` :: aller au diagnostique suivant (boucle à la fin)
 * `gd` :: aller à la définition (ouvre une liste et un aperçu si c'est dans un
   autre fichier)
 * `gr` :: lister les références d'une variable ou fonction
@@ -272,6 +278,11 @@ défaut.
 *coc.vim*:
 
 * `,rn` :: renommer une variable ou une classe (et toutes ses références)
+* `,f` :: formatter le code sélectionné
+* `,ac` :: afficher menu avec les actions de code disponibles pour le mot sous
+  le curseur
+  * e.g. ajouter un `import` manquant ou corriger un problème
+* `,qf` :: appliquer quick fix. seulement disponible pour quelques serveurs LSP comme pyright+ruff
 
 *vim-markdown*:
 
