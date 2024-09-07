@@ -12,6 +12,7 @@ scriptencoding utf-8
 call plug#begin('~/.vim/bundle')
 
 " ---- Misc functionality
+Plug 'tpope/vim-sensible' " Set a bunch of default options that make [n]vim better by default
 Plug 'tpope/vim-rsi' " GNU Readline-style key bindings in insert and command mode
 Plug 'tpope/vim-commentary' " gcc or gc<movement> to comment out lines
 Plug 'tpope/vim-repeat' " make '.' repeat plugin commands instead of only builtins
@@ -47,21 +48,17 @@ Plug 'junegunn/vim-peekaboo'  " Display registers when typing <quote> or @ comma
 Plug 'Yilin-Yang/vim-markbar'  " Display list of marks with context around them when typing ` or '
 call plug#end()
 
-syntax on
 set synmaxcol=1000   " limit syntax highlighting for long lines
 set ignorecase      " Do case insensitive matching
 set smartcase       " Do smart case matching
-set smarttab        " Insert blanks according to shiftwidth
 set showcmd         " Show (partial) command in status line.
 set showmatch       " Show matching brackets.
-set incsearch       " Incremental search
 set hlsearch        " Higlight searched term
 set autoindent      " always line up with indentation of previous line
 set shiftround      " when indenting, always line up with multiples of shiftwidth instead of blindly adding shiftwidth
 set showtabline=2   " Always show tabline for window height consistency
 set guioptions-=T   " Disable the toolbar in the GUI
 
-set wildmenu        " Show a list of <tab> suggestions while in command mode
 set wildmode=list:longest
 set wildoptions=fuzzy
 set wildignore+=.hg,.git,.svn                    " Version control
@@ -81,30 +78,13 @@ set wildignore+=*.dx64fsl                        " CCL
 set wildignore+=*.lx64fsl                        " CCL
 
 set mouse=          " Disable mouse
-set nrformats-=octal " Don't auto-increment numbers in octal mode if prefixed with a 0
-set autoread
-set tabpagemax=50   " Let me open more than 10 tabs gahdamit
-set sessionoptions-=options
-"set backspace=indent,eol,start
 set splitbelow      " create new splits below the current window
 set splitright      " create new vsplits to the right of the current window
 set title           " set window title to filename
 
-set ttimeout
-set ttimeoutlen=100
 " set shorter updatetime to make CursorHold happen quicker, for coc's hilight
 " feature (see aucmd below).
 set updatetime=2500
-
-" Keep some visible text "outside" of the cursor
-set scrolloff=1
-set sidescrolloff=5
-
-" better display if last line doesn't fit
-set display+=lastline
-
-" better indicators for :set list
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 
 if v:version > 703 || v:version == 703 && has('patch541')
   set formatoptions+=j " Delete comment character when joining commented lines
@@ -118,9 +98,6 @@ set formatoptions+=cro
 " don't break lines automatically if they were already longer than textwidth
 " when going to insert mode
 set formatoptions+=l
-
-" remember more commands and search patterns
-set history=1000
 
 " displace the shada/viminfo file into XDG_DATA_HOME
 if has('nvim')
@@ -171,9 +148,6 @@ hi Delimiter ctermfg=DarkMagenta guifg=Black
 hi LineNrAbove ctermfg=DarkGray
 hi LineNrBelow ctermfg=DarkGray
 hi LineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
-
-" Always show the status line
-set laststatus=2
 
 " Override the builtin gx command since it's doing nonsense.
 function! OpenURLUnderCursor()
@@ -264,13 +238,6 @@ nmap <silent> <leader>é  <Plug>LocationNext
 let g:airline#extensions#tabline#enabled = 1    " Show buffers when there's only one tab
 let g:airline_powerline_fonts = 1               " use powerline fonts. apparently utf8 symbols don't show up right
 let g:airline#extensions#whitespace#enabled = 0 " pesky whitespace detection
-
-" Add syntax-based matching for %
-packadd! matchit
-
-" Make the :Man command available. This one is not in a pack in the default
-" setup.
-runtime ftplugin/man.vim
 
 augroup vimrc
   " TODO: not sure how to push this out to a plugin in ~/.vim ...
