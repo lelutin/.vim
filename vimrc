@@ -122,8 +122,8 @@ set number          " Display current line number. Without this relativenumber s
 set relativenumber  " Display line offsets. This makes it easier to use line movements
 augroup numbertoggle
   autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+  autocmd BufEnter,FocusGained,InsertLeave,InsertEnter,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,WinLeave   * if &nu                  | set nornu | endif
 augroup END
 
 " make sure that diffs are performed vertically. without this, Gdiff is split
