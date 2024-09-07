@@ -168,6 +168,9 @@ hi Comment ctermfg=DarkCyan guifg=Cyan
 hi String ctermfg=Green guifg=Green
 hi Operator ctermfg=White guifg=Black
 hi Delimiter ctermfg=DarkMagenta guifg=Black
+hi LineNrAbove ctermfg=DarkGray
+hi LineNrBelow ctermfg=DarkGray
+hi LineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
 
 " Always show the status line
 set laststatus=2
