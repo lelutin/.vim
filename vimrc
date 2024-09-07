@@ -116,7 +116,7 @@ let mapleader = ','
 " contortions to actually get a new line.
 " I'm trying to fix that in the "file_include" branch on the vim-puppet
 " plugin
-set textwidth=79
+set textwidth=80
 
 set number          " Display current line number. Without this relativenumber shows an offset of 0 which is not useful
 set relativenumber  " Display line offsets. This makes it easier to use line movements
