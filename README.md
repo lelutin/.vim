@@ -60,32 +60,27 @@ défaut.
 * `<c-w>v` :: séparer la fenêtre à la verticale sur le même buffer
 * `<c-w>s` :: séparer la fenêtre à l'horizontale sur le même buffer
 * `<c-w>n` :: séparer la fenêtre à l'horizontale avec un nouveau buffer
-* `<c-w>$direction` :: se déplacer vers le tab dans cette direction là (où
+* `<c-w>$direction` :: se déplacer vers la fenêtre dans cette direction là (où
   `$direction` est soit h,j,k,l soit les flèches)
 * `<c-w>$maj_direction` :: déplacer le buffer actif vers la portion de l'écran
   qui correspond à la direction demandée où `$maj_direction` est un de H,J,K,L
   (e.g. `<c-w>H` utilise "la gauche" pour le buffer actif)
 * `<c-w>+ / <c-w>-` :: augmenter / diminuer le nombre de lignes (la hauteur)
 * `N<c-w>_` :: définir le nombre de lignes (la hauteur) à N lignes
-* `:Vex` :: ouvrir le file browser dans un split vertical
-* `,<space>` :: ouvrir le file browser dans la fenêtre courante (p-e utiliser plus
-    ça)
-  * `:Ex` :: commande équivalente
-* `:term [{cmd}]` :: ouvrir un terminal dans un nouveau split horizontal
-  * si `{cmd}` est donné, roule la commande *au lieu* d'un terminal
+* `:term {cmd}` :: lancer `{cmd}` au lieu d'un shell dans un terminal
   * avec l'option `++no-close` en plus, le terminal sera fermé quand la
     commande se termine (comportement par défaut pour un shell)
-  * dans nvim le terminal s'ouvre dans un nouveau buffer mais dans la fenêtre
-    actuelle par défaut. il faut utiliser `:sp | ter` pour l'ouvrir dans un
-    nouveau split
-* `:vert term` :: ouvrir un terminal dans un nouveau split vertical
-  * fonctionne pas dans nvim. il faut plutôt utiliser: `:vsp | ter`
-* `:tab term` :: ouvrir un terminal dans un nouveau tab
-* `:term ++curwin` :: ouvrir un terminal dans la fenêtre courante
-
-*vimrc*:
-
-* `<c-w>V` :: séparer la fenêtre à la verticale avec un nouveau buffer
+  * NOTE: dans nvim le terminal ne s'ouvre *pas* dans un nouveau buffer mais
+    dans la fenêtre actuelle par défaut. voir plus bas pour ouvrir dans un
+    nouveau split ou tab.
+* nvim: `:split | term` :: ouvrir un terminal dans un nouveau split horizontal
+  * dans vim: `:term`
+* nvim: `:vsplit | term` :: ouvrir un terminal dans un nouveau split vertical
+  * dans vim: `:vert term`
+* nvim: `:tabnew | term` :: ouvrir un terminal dans un nouveau tab
+  * dand vim: `:tab term`
+* nvim: `:term` :: ouvrir un terminal dans la fenêtre courante
+  * dans vim: `:term ++curwin`
 
 *vim-unimpaired*:
 
@@ -94,13 +89,19 @@ défaut.
 * `]f` :: ouvrir le prochain fichier en ordre alphabétique dans le même
   répertoire que le fichier courant
 
+*vimrc*:
+
+* `<space>e` :: toggle la fenêtre du file browser de coc-explorer
+
 **t-mode**:
 
-* `<c-w>N` :: dans un terminal, changer au mode "normal".
+* nvim: `<c-\><c-n>` :: dans un terminal, changer au mode "normal".
+  * dans vim: `<c-w>N`
 
 *vimrc*:
 
-* `<c-w>n` :: même chose que `<c-w>N` mais sans avoir besoin de shift
+* `<c-n>` :: dans un terminal, changer au mode "normal". moins chiant que le
+  binding par défaut.
 
 ## Mouvements du curseur
 
@@ -125,10 +126,6 @@ défaut.
   fenêtre (voir ctrl-o pour revenir en arrière)
 * `<c-w>gf` :: ouvrir en édition le nom de fichier sous le curseur, dans un
   nouveau tab
-
-*vimrc*:
-
-* `gp` :: re-sélectionner le texte qui a été collé en dernier
 
 *vim-unimpaired*:
 
@@ -157,13 +154,17 @@ défaut.
 
 **i-mode**:
 
-*vimrc*:
+* `<c-x><c-e>`/`<c-x><c-y>` :: scroll vers en bas / vers en haut
+
+*vim-rsi*:
 
 * `<c-a>` :: aller au début de la ligne
 * `<c-e>` :: aller à la fin de la ligne
-* `<c-h>` :: reculer d'un mot
-* `<c-l>` :: avancer d'un mot
-* `<c-x><c-e>`/`<c-x><c-y>` :: scroll vers en bas / vers en haut
+* `<m-b>` :: bouger le curseur un mot à gauche
+* `<m-f>` :: bouger le curseur un mot à droite
+
+*vimrc*:
+
 * `<c-t>` :: swapper les deux caractères placés avant le curseur (comme `<c-t>` dans bash)
 
 **pendant une recherche**:
@@ -194,8 +195,8 @@ défaut.
 **n-mode**:
 
 * `dv0` :: Effacer le début de la ligne jusqu'au curseur, incluant le caractère
-    sous le curseur (e.g. le modificateur `v` ajoute l'inclusion de la position
-    sous le curseur)
+    sous le curseur
+  * le modificateur `v` ajoute l'inclusion de la position sous le curseur
 * `z=` :: Remplacer le mot par une suggestion de dictionnaire
   * avec un compteur, e.g. `1z=`, automatiquement changer pour la Nième
     suggestion
@@ -218,8 +219,8 @@ défaut.
 * `,vw` :: Ouvrir un split vertical sur un fichier dans le même répertoire
   que le fichier courant
 * `,ml` :: Ajouter un match qui highlight la ligne
-* `,mc` :: Effacer (clear) les matches (donc les highlights). Note: ça enlève
-  aussi les couleurs ajoutées par vim-indent-guides
+* `,mc` :: Effacer (clear) les matches (donc les highlights)
+  * Note: ça enlève aussi les couleurs ajoutées par vim-indent-guides
 
 *vim-surround*:
 
@@ -230,6 +231,7 @@ défaut.
       * `-` -> `<%- \r -%>`
       * `%` -> `<% \r %>`
       * `=` -> `<%= \r %>`
+      * TODO: ajouter ça dans le module vim-puppet?
 * `cs${mouvement}}` :: entourer le mouvement du caractère spécial. (c'est comme
   `ysi${mouvement}}`)
 * `ds"` :: retirer les quotes autour du curseur
@@ -267,10 +269,6 @@ défaut.
 * `[uu` :: URL encode
 * `]uu` :: URL decode
 
-*vim-tabular*:
-
-* `,<tab>` :: aligner les flèches style ruby/puppet
-
 *coc.vim*:
 
 * `,rn` :: renommer une variable ou une classe (et toutes ses références)
@@ -300,9 +298,13 @@ défaut.
 
 *coc.vim*:
 
-* `<c-space>` :: toggle la complétion de coc.vim
 * `<c-y>` :: quand la complétion est activée: accepter la sélection ou
   sélectionner le premier choix.
+
+*vimrc*:
+
+* `<tab>` :: si le curseur est n'est pas placé au début d'une ligne ou après
+  un espace, toggle la complétion de coc.vim. sinon c'est un tab normal
 
 **v-mode**:
 
@@ -325,7 +327,7 @@ défaut.
 
 **n-mode**:
 
-* `:set spelllang=fr_fr` :: changer le dictionnaire au français
+* `:set spelllang=fr` :: changer le dictionnaire au français
 
 *vim-unimpaired*:
 
@@ -335,32 +337,6 @@ défaut.
 * `yox` :: affiche la ligne et la colonne du curseur
 
 ## Débugger du code
-
-*vimrc*:
-
-* `,dpp` :: toggle un breakpoint
-* `,dpc` :: toggle un breakpoint conditionnel (pas supporté par tous les
-  adapteurs)
-* `,dpf` :: ajouter un breakpoint de fonction (pas un toggle.. p-e y'aurait
-  moyen de le faire?)
-* `,dd` :: lancer une session de débuggage
-* `,de` :: désactiver/fermer le débuggeur
-* `,d_` :: redémarrer la run de débuggage avec les mêmes arguments
-* `,dc` :: aller à la fenêtre de code
-* `,dw` :: aller a la fenêtre de watches
-* `,dt` :: aller à la fenêtre de terminal
-* `,dv` :: aller à la fenêtre de variables
-* `,ds` :: aller à la fenêtre de stack trace
-* `,do` :: aller à la fenêtre d'output
-* `,dpl` :: mettre à jour la location list avec la liste de breakpoints et
-  afficher la location list.
-* `,dl` :: (à droite, ) step into
-* `,dh` :: (à gauche, ) step out
-* `,dj` :: (en bas, ) step over
-* `,dk` :: (en haut, ) continue
-* `,d<space>` :: exécuter jusqu'au curseur
-* `,dWa` :: ajouter un watch
-* `,dWd` :: supprimer un watch
 
 * `<F10>` :: afficher les groupes de syntaxe sous le curseur
 
@@ -399,20 +375,4 @@ Depend du plugin `coc-diagnostic`. Ajouter ça à la config:
     },
     "diagnostic-languageserver.filetypes": {
       "vim": "vintstyle"
-    },
-
-#### Puppet
-
-Ajouter ça à la config. Attention: le chemin vers `puppet-languageserver` a
-*besoin* d'être un chemin absolu sinon CoC n'est pas capable de le lancer. Bien
-entendu, ajuster le chemin pour `modulepath` ou encore retirer complètement
-l'option `--puppet-settings`:
-
-    "languageserver": {
-      "puppet": {
-        "command": "ruby",
-        "args": ["/home/gabster/.vim/bundle/vimspector/gadgets/linux/cust_puppet-debugserver/puppet-languageserver","--stdio","--puppet-settings=--modulepath,~/dev/puppet/"],
-        "filetypes": ["puppet"],
-        "rootPatterns": [".git/", "metadata.json"]
-      }
     },

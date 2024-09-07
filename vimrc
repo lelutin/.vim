@@ -19,9 +19,6 @@ Plug 'tpope/vim-sleuth' " adjust shiftwidth and expandtab according to filetype
 Plug 'tpope/vim-speeddating' " ctrl-x/ctrl-a for dates
 Plug 'tpope/vim-surround' " cs to change surrounding characters
 Plug 'tpope/vim-unimpaired' " set of command mappings
-"Plug 'SirVer/ultisnips' " Snippet definition plugin
-Plug 'honza/vim-snippets' " set of snippets
-" XXX the next one does not seem to work with nvim
 Plug 'farmergreg/vim-lastplace' " restore last known cursor position and open folds to show content (avoid doing it for commit messages)
 " Plug 'junegunn/fzf' " command builder using fzf for fuzzing text
 " Plug 'junegunn/fzf.vim' " set of basic commands using fzf
@@ -31,34 +28,23 @@ Plug 'romainl/vim-cool' " Automatically disable hlsearch to get it out of the wa
 " LSP client: for language completion, linting, formatting, syntax checking and
 " automatic fixes
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': {-> coc#util#update_extensions()()} }
-" TODO I'm using this only for puppet code. If there could be some
-" auto-formatting via coc.nvim I could remove this plugin.
-Plug 'godlygeek/tabular' " align text on a certain pattern -- needs to be before vim-markdown
 Plug 'windwp/nvim-autopairs'
 
 " ---- Code syntax
 Plug 'rodjek/vim-puppet' " puppet syntax hilighting
+Plug 'noprompt/vim-yardoc'  " colorize YARD tags and directives in ruby and puppet code
 Plug 'pearofducks/ansible-vim' " Make ansible playbooks look less like a bunch of all the same thing
 Plug 'preservim/vim-markdown' " better markdown syntax hilighting
 Plug 'stephpy/vim-yaml'  " better yaml syntax hilighting
 Plug 'cespare/vim-toml'  " TOML syntax highlighting
-" also see this for potential puppet integration https://github.com/rodjek/vim-puppet/issues/125
-Plug 'noprompt/vim-yardoc'  " colorize YARD tags and directives in ruby code
 Plug 'aliou/bats.vim'  " BATS syntax hilighting
 
-" Git integration
-Plug 'tpope/vim-fugitive' " Interact with git from vim
-
 " Interface additions/changes
+Plug 'tpope/vim-fugitive' " Interact with git from vim
 Plug 'bling/vim-airline' " Enhanced statusbar and titlebar
 Plug 'nathanaelkane/vim-indent-guides' " colorize indents
-Plug 'junegunn/vim-peekaboo'  " Display registers when using " or @ commands to make it easier to choose
-
-" ---- Debug/testing
-" DAP client and interface. Visual debugger for multiple languages
-Plug 'puremourning/vimspector', {'do': {-> vimspector#Update('')}} " vim debugging IDE. needs DAP servers installed
-" alternative for nvim: https://github.com/mfussenegger/nvim-dap
-Plug 'vim-test/vim-test' " easily run tests with code files still around
+Plug 'junegunn/vim-peekaboo'  " Display registers when typing <quote> or @ commands to make it easier to choose
+Plug 'Yilin-Yang/vim-markbar'  " Display list of marks with context around them when typing ` or '
 call plug#end()
 
 syntax on
@@ -70,10 +56,6 @@ set showcmd         " Show (partial) command in status line.
 set showmatch       " Show matching brackets.
 set incsearch       " Incremental search
 set hlsearch        " Higlight searched term
-"set tabstop=8       " Number of spaces for <tab> characters
-"set softtabstop=4   " Make backspace delete that many characters
-"set shiftwidth=4    " Number of spaces used for automatic indentation
-"set expandtab       " Transform <tab> characters into spaces
 set autoindent      " always line up with indentation of previous line
 set shiftround      " when indenting, always line up with multiples of shiftwidth instead of blindly adding shiftwidth
 set showtabline=2   " Always show tabline for window height consistency
@@ -140,8 +122,10 @@ set formatoptions+=l
 " remember more commands and search patterns
 set history=1000
 
-" displace the viminfo file into XDG_DATA_HOME
-if ! has('nvim')
+" displace the shada/viminfo file into XDG_DATA_HOME
+if has('nvim')
+  set shadafile=~/.local/share/nvim/shadafile
+else
   set viminfofile=~/.local/share/vim/viminfo
 endif
 
@@ -157,6 +141,14 @@ let mapleader = ','
 " I'm trying to fix that in the "file_include" branch on the vim-puppet
 " plugin
 set textwidth=79
+
+set number          " Display current line number. Without this relativenumber shows an offset of 0 which is not useful
+set relativenumber  " Display line offsets. This makes it easier to use line movements
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
 
 " make sure that diffs are performed vertically. without this, Gdiff is split
 " horizontally, which looks really bad
@@ -179,21 +171,6 @@ hi Delimiter ctermfg=DarkMagenta guifg=Black
 
 " Always show the status line
 set laststatus=2
-
-" always set foldlevel to 2 to get meaningful content by default but fold more
-" complex blocks of code
-set foldlevel=3
-
-" General syntax configuration
-"
-" see more per-syntax config in after/ftplugin/*.vim
-let g:perl_fold = 1
-let g:ruby_fold = 1
-let g:sh_fold_enabled = 7 " used as a bitfield by the syntax file. 1 = functions, 2 = heredoc, 4 = idofor
-
-" Reselect the last pasted text
-" see https://vimtricks.com/p/reselect-pasted-text/
-nnoremap gp `[v`]
 
 " Override the builtin gx command since it's doing nonsense.
 function! OpenURLUnderCursor()
@@ -220,33 +197,16 @@ nnoremap gx :call OpenURLUnderCursor()<CR>
 inoremap <silent> <C-t> <C-o>:normal hhxpl<CR>
 
 if has('nvim')
-  " nvim doesn't let you move to another window by default when in term-insert mode
-  tnoremap <C-w><C-w> <C-\><C-N><C-W>w
-  tnoremap <C-w>w <C-\><C-N><C-W>w
-  tnoremap <C-w><C-j> <C-\><C-N><C-W>j
-  tnoremap <C-w>j <C-\><C-N><C-W>j
-  tnoremap <C-w><C-k> <C-\><C-N><C-W>k
-  tnoremap <C-w>k <C-\><C-N><C-W>k
-  tnoremap <C-w><C-h> <C-\><C-N><C-W>h
-  tnoremap <C-w>h <C-\><C-N><C-W>h
-  tnoremap <C-w><C-l> <C-\><C-N><C-W>l
-  tnoremap <C-w>l <C-\><C-N><C-W>l
-
   augroup terminal
-    " Make it easier to go from terminal's insert mode to normal mode, cause <C-w>N
-    " is a PITA to reach for
-    " Just mapping <Esc> is too intrusive though since it makes escape-sequences
-    " like deleting a word impossible to type.
-    tnoremap <C-w>n <C-\><C-N>
+    " The default nvim binding of <C-\><C-N> is a PITA for non-us keyboard.
+    " <C-n> is not meaningfully mapped for bash so we won't be overshadowing
+    " something useful with this mapping.
+    tnoremap <C-n> <C-\><C-N>
     " nvim doesn't enter insert mode automatically which is annoying
     autocmd TermOpen * startinsert
-
-    " nvim doesn't let users automatically close the window when the shell exits
-    " this is a workaround to avoid needing to press something
-    autocmd TermClose * call feedkeys('i')
   augroup END
 else
-  tnoremap <C-w>n <C-w>N
+  tnoremap <C-n> <C-w>N
 endif
 
 " Create undo break point for c-u and c-w. this way it's possible to undo when
@@ -265,22 +225,6 @@ augroup vimrc_surround
   au FileType embeddedpuppet let b:surround_37 = "<% \r %>"
   au FileType embeddedpuppet let b:surround_61 = "<%= \r %>"
 augroup END
-
-" I'm always calling this to fix puppet manifests
-nnoremap <leader><Tab> :Tabularize /=><CR>
-
-" TODO hmm je considere p-e plutôt utiler coc-explorer
-" Netrw (builtin file browser) configuration
-" show files in a tree
-let g:netrw_liststyle = 3
-" type I in the browser to bring the banner back
-let g:netrw_banner = 0
-" not sure which value I prefer here yet (either 1, 3 or 4 see :help netrw_browse_split)
-" let's go back to the default and use :Ex for a while to see if it's more
-" functional overall
-"let g:netrw_browse_split = 1
-let g:netrw_winsize = 25
-nnoremap <leader><space> :Ex<CR>
 
 " Make vim-cool show number of search matches
 let g:CoolTotalMatches = 1
@@ -312,90 +256,6 @@ nmap <silent> <leader>é  <Plug>LocationNext
 " why is this necessary.. couldn't it just figure out that I have yamllint
 " installed?
 "let g:syntastic_yaml_checkers = ['yamllint']
-
-" Make VimspectorInstall behave in a more predictable way:
-" Don't install stuff underneath the plugin bundle
-let g:vimspector_base_dir = expand('$HOME/.local/lib/vimspector')
-" only install those builtin gadgets
-let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-bash-debug', 'puppet-editor-services' ]
-let g:vimspector_configurations = {
-  \  'puppet': {
-  \    'default': 'true',
-  \    'adapter': 'puppet-editor-services',
-  \    'filetypes': [ 'puppet', 'embeddedpuppet' ],
-  \    'configuration': {
-  \      'request': 'launch',
-  \      'manifest': '${file}',
-  \      'args': [
-  \        '--noop',
-  \        '--verbose',
-  \        '--modulepath',
-  \        '~/dev/puppet'
-  \      ]
-  \    }
-  \  }
-  \}
-
-" Create some mappings for the vimspector debugger. I don't particularly like
-" the default mappings since they make you go to the F* keys and that's far
-" away from the home position.
-"
-" Default configurations for running the current file can be found in
-" ~/.vim/bundle/vimspector/configurations/linux/$language/*.json
-"
-" Custom gadgets (vscode plugins) are added via
-" ~/.vim/bundle/vimspector/gadgets/custom/cust_$language.json
-"
-nnoremap <leader>dd :call vimspector#Launch()<CR>
-" think: debugger exit
-" XXX in nvim, when vimspector failed to initialize the debugger adaptor, this
-"   fails in
-nnoremap <leader>de :call vimspector#Reset()<CR>
-
-" TODO verifier si je peux mapper des trucs un peu plus dans ma face avec une
-" autocommand VimspectorUICreated
-fun GotoWindow(id)
-  call win_gotoid(a:id)
-  "MaximizerToggle  "still not sure I want to do this. but it could be worth a try (need to install the plugin
-endfun
-"nnoremap <leader>m :MaximizeToggle!<CR>  "same as above
-
-" go to window commands. the first letter of their names
-nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
-nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.terminal)<CR>
-nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
-nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
-nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
-nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
-
-" code movements. movement keys
-" go right for a deeper stack (step into)
-nmap <leader>dl <Plug>VimspectorStepInto
-" go down the current position (step over)
-nmap <leader>dj <Plug>VimspectorStepOver
-" go left for a shallower stack (step out)
-nmap <leader>dh <Plug>VimspectorStepOut
-" go up to continue without looking (¯\_(ツ)_/¯)
-nmap <leader>dk <Plug>VimspectorContinue
-" not really using a movement key, but reset should be out of the way to avoid
-" hitting it by mistake
-nmap <leader>d_ <Plug>VimspectorRestart
-" not really a movement either. it's a common action and I don't want it to
-" use similar leading chars to avoid creating delays for other common actions
-nmap <leader>d<space> <Plug>VimspectorRunToCursor
-
-" break points
-nmap <leader>dpp <Plug>VimspectorToggleBreakpoint
-nmap <leader>dpc <Plug>VimspectorToggleConditionalBreakpoint
-" This is not supported by a bunch of gadgets (i.e. python and bash don't
-" support it).
-nmap <leader>dpf <Plug>VimspectorAddFunctionBreakpoint
-nnoremap <leader>dpl :call vimspector#ListBreakpoints()<CR>
-
-" watches
-nnoremap <leader>dWa :call vimspector#AddWatch()<CR>
-" marche juste en etant dans la fenetre des watches. c'est un peu nono
-nnoremap <leader>dWd :call vimspector#DeleteWatch()<CR>
 
 " Airline configuration
 let g:airline#extensions#tabline#enabled = 1    " Show buffers when there's only one tab
@@ -449,9 +309,6 @@ augroup END
 " set colorcolumn=+1
 "hi ColorColumn ctermbg=black guibg=black
 
-" Create new buffer and show it in a new vertical split
-nnoremap <C-W>V :vnew<CR>
-
 " Open files located in the same dir in with the current file is edited
 nnoremap <leader>tw :tabe <C-R>=expand("%:.:h") . "/"<CR>
 nnoremap <leader>ew :e <C-R>=expand("%:.:h") . "/"<CR>
@@ -477,18 +334,10 @@ highlight LineHighlight ctermbg=darkgray guibg=darkgray
 " highlight (match) the current line
 " Note that this line won't follow changes in the file. If it becomes annoying
 " I could always use https://github.com/inkarkat/vim-mark instead
-nnoremap ml :call matchadd('LineHighlight', '\%'.line('.').'l')<CR>
+nnoremap <leader>ml :call matchadd('LineHighlight', '\%'.line('.').'l')<CR>
 
 " clear all the matches (so also highlighted lines)
-nnoremap mc :call clearmatches()<CR>
-
-"" UltiSnips
-""
-"" Open snippet edition in a new tab instead of current window
-"let g:UltiSnipsEditSplit = 'tabdo'
-"" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"" not using YCM anymore.. it's probably ok to keep it as it is
-"let g:UltiSnipsExpandTrigger='<c-space>'
+nnoremap <leader>mc :call clearmatches()<CR>
 
 " coc.vim configuration
 "
@@ -503,7 +352,6 @@ nnoremap mc :call clearmatches()<CR>
 let g:coc_global_extensions = [
   \ 'coc-explorer',
   \ 'coc-lists',
-  \ 'coc-snippets',
   \ 'coc-terminal',
   \ 'coc-sh',
   \ 'coc-json',
@@ -537,7 +385,6 @@ else
 endif
 
 " Make `<tab>` used for trigger completion, completion confirm, snippet expand and jump like VSCode.
-" doesn't work too well with <c-j> and <c-k> for snippet movements
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1):
       \ CheckBackspace() ? "\<Tab>" :
@@ -622,25 +469,12 @@ nnoremap <silent><nowait> <space>gc :<C-u>CocList commits<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" coc-snippets mappings
-"imap <C-l> <Plug>(coc-snippets-expand)
-let g:coc_snippet_next = '<tab>'
-
 " coc-explorer mappings
 nmap <space>e :CocCommand explorer<CR>
 
-" vim-test mappings
-if has('nvim')
-  let test#strategy='neovim_sticky'
-else
-  let test#strategy='vimterminal'
-endif
-
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-a> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-v> :TestVisit<CR>
+" only display alphabetic marks a-i and A-I
+let g:markbar_marks_to_display = 'abcdefghiABCDEFGHI'
+let g:markbar_peekaboo_marks_to_display = 'abcdefghiABCDEFGHI'
 
 " Initial setup for nvim-autopairs
 " Weirdly, I can't indent the block inside the if or the vimrc parsing crashes
