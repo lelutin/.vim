@@ -351,6 +351,11 @@ nmap <space>e :CocCommand explorer<CR>
 " only display alphabetic marks a-i and A-I
 let g:markbar_marks_to_display = 'abcdefghiABCDEFGHI'
 let g:markbar_peekaboo_marks_to_display = 'abcdefghiABCDEFGHI'
+" when marks are set to be persistent, vim-markbar reopens the buffers that have
+" marks in them which becomes annoying real fast since I'm always getting errors
+" about setting those buffers as readonly since they're already opened
+" elsewhere. I personnally don't have a strong use case for persisting marks
+let g:markbar_persist_mark_names = v:false
 
 " Initial setup for nvim-autopairs
 " Weirdly, I can't indent the block inside the if or the vimrc parsing crashes
