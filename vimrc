@@ -187,6 +187,7 @@ let g:vim_markdown_strikethrough = 1
 let g:vim_markdown_new_list_item_indent = 2
 
 " Airline configuration
+set noshowmode  " airline already shows the mode in the statusbar
 let g:airline#extensions#tabline#enabled = 1    " Show buffers when there's only one tab
 let g:airline_powerline_fonts = 1               " use powerline fonts. apparently utf8 symbols don't show up right
 let g:airline#extensions#whitespace#enabled = 0 " pesky whitespace detection
