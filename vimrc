@@ -38,6 +38,7 @@ Plug 'preservim/vim-markdown' " better markdown syntax hilighting
 Plug 'stephpy/vim-yaml'  " better yaml syntax hilighting
 Plug 'cespare/vim-toml'  " TOML syntax highlighting
 Plug 'aliou/bats.vim'  " BATS syntax hilighting
+Plug 'junegunn/vader.vim' " vimscript unit testing framework and syntax coloring for the files. used by vim-puppet
 
 " Interface additions/changes
 Plug 'tpope/vim-fugitive' " Interact with git from vim
