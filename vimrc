@@ -129,6 +129,10 @@ augroup END
 " make sure that diffs are performed vertically. without this, Gdiff is split
 " horizontally, which looks really bad
 set diffopt+=vertical
+" ignore whitespace changes in diff mode
+set diffopt+=iwhite
+" use smarter diff algorithm. that's only visible in some circumstances
+set diffopt+=algorithm:histogram
 
 " default to french dictionary
 set spelllang=fr
