@@ -9,7 +9,7 @@ scriptencoding utf-8
 " https://github.com/johngrib/vimscript-cheatsheet
 
 " Manage plugins with vim-plug
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/.config/nvim/bundle')
 
 " ---- Misc functionality
 Plug 'tpope/vim-sensible' " Set a bunch of default options that make [n]vim better by default
