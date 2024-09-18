@@ -214,11 +214,11 @@ augroup vimrc
 
   " Templates for some default content for certain files
   " this file was adapted from https://github.com/puppetlabs/pdk-templates/blob/master/moduleroot_init/README.md.erb
-  autocmd BufNewFile README.md 0r ~/.vim/templates/README.md
-  autocmd BufNewFile CHANGELOG.md 0r ~/.vim/templates/CHANGELOG.md
-  autocmd BufNewFile *.sh 0r ~/.vim/templates/bash.sh
-  autocmd BufNewFile *.pp 0r ~/.vim/templates/puppet.pp
-  autocmd BufNewFile *.py 0r ~/.vim/templates/python.py
+  autocmd BufNewFile README.md execute("0r ". fnamemodify(expand('$MYVIMRC'), ':h') ."/templates/README.md")
+  autocmd BufNewFile CHANGELOG.md execute("0r ". fnamemodify(expand('$MYVIMRC'), ':h') ."/templates/CHANGELOG.md")
+  autocmd BufNewFile *.sh execute("0r ". fnamemodify(expand('$MYVIMRC'), ':h') ."/templates/bash.sh")
+  autocmd BufNewFile *.pp execute("0r ". fnamemodify(expand('$MYVIMRC'), ':h') ."/templates/puppet.pp")
+  autocmd BufNewFile *.py execute("0r ". fnamemodify(expand('$MYVIMRC'), ':h') ."/templates/python.py")
 augroup END
 
 " Detect playbooks properly to highlight certain ansible keywords in them.
