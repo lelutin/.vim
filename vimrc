@@ -57,6 +57,7 @@ set autoindent      " always line up with indentation of previous line
 set shiftround      " when indenting, always line up with multiples of shiftwidth instead of blindly adding shiftwidth
 set showtabline=2   " Always show tabline for window height consistency
 set guioptions-=T   " Disable the toolbar in the GUI
+set list            " Display weird characters like tab and nbsp in order to better spot them
 
 set wildmode=list:longest
 set wildoptions=fuzzy
@@ -211,6 +212,11 @@ augroup vimrc
   "   terminals will not get this command run.
   let non_interactive_filetypes = ['coc-explorer']
   au FileType * if index(non_interactive_filetypes, &ft) < 0 | let w:m2=matchadd('ErrorMsg', '\%120v', -1) | endif
+
+  " I *never* want to input an nbsp but apparently I occasionally do that when
+  " reaching for { and combining right-alt with space. Let's just automatically
+  " get rid of those characters.
+  autocmd BufWritePre * silent! :%s/\%u00A0/ /g
 
   " Templates for some default content for certain files
   " this file was adapted from https://github.com/puppetlabs/pdk-templates/blob/master/moduleroot_init/README.md.erb
