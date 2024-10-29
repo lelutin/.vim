@@ -81,6 +81,7 @@ set mouse=          " Disable mouse
 set splitbelow      " create new splits below the current window
 set splitright      " create new vsplits to the right of the current window
 set title           " set window title to filename
+set nomodeline      " never execute random commands from random files
 
 " set shorter updatetime to make CursorHold happen quicker, for coc's hilight
 " feature (see aucmd below).
