@@ -29,6 +29,7 @@ Plug 'farmergreg/vim-lastplace' " restore last known cursor position and open fo
 " automatic fixes
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': {-> coc#util#update_extensions()()} }
 Plug 'windwp/nvim-autopairs'
+Plug 'tpope/vim-endwise'
 
 " ---- Code syntax
 Plug 'rodjek/vim-puppet' " puppet syntax hilighting
