@@ -364,6 +364,8 @@ nmap <space>e :CocCommand explorer<CR>
 " Weirdly, I can't indent the block inside the if or the vimrc parsing crashes
 if has('nvim')
 lua << EOF
-require('nvim-autopairs').setup {}
+require('nvim-autopairs').setup {
+  fast_wrap = {} 
+}
 EOF
 endif
