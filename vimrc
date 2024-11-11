@@ -238,6 +238,7 @@ augroup END
 nnoremap <leader>tw :tabe <C-R>=expand("%:.:h") . "/"<CR>
 nnoremap <leader>ew :e <C-R>=expand("%:.:h") . "/"<CR>
 nnoremap <leader>vw :vsplit <C-R>=expand("%:.:h") . "/"<CR>
+nnoremap <leader>sw :split <C-R>=expand("%:.:h") . "/"<CR>
 
 " Obscure shortcut, helpful for debugging syntax hilighting.
 " Show syntax hilighting group under cursor
