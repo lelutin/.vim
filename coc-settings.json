@@ -17,17 +17,17 @@
       ]
     }
   },
+  "python.pythonPath": "python3",
   "coc.preferences.formatOnSave": true,
+  "python.formatting.provider": "black",
+  "python.linting.flake8Enabled": true,
+  "pyright.organizeimports.provider": "ruff",
+  "pyright.testing.provider": "pytest",
   "workspace.ignoredFolders": [
     "$HOME",
     "$HOME/.cargo/**",
     "$HOME/.rustup/**"
   ],
-  "python.pythonPath": "python3",
-  "python.linting.ruffEnabled": true,
-  "python.formatting.provider": "ruff",
-  "pyright.organizeimports.provider": "ruff",
-  "pyright.testing.provider": "pytest",
   "vimlsp.suggest.fromRuntimepath": true,
   "diagnostic-languageserver.linters": {
     "vintstyle": {
