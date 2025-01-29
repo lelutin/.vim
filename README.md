@@ -93,7 +93,7 @@ défaut.
 
 * `<space>e` :: toggle la fenêtre du file browser de coc-explorer
 * `<space>l` :: afficher une liste de toutes les listes CoC
-* `<space>a` :: ouvrir une liste des diagnostiques avec fuzzy search
+* `<space>d` :: ouvrir une liste des diagnostiques avec fuzzy search
 * `<space>c` :: afficher une liste des commandes CoC
 * `<space>o` :: afficher un "outline" du code dans le buffer
 * `<space>w` :: afficher une liste des fenêtres vim avec fuzzy search

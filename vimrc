@@ -359,7 +359,7 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " Show all lists
 nnoremap <silent><nowait> <space>l  :<C-u>CocList<CR>
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
 " Show commands.
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document. e.g. all definitions
