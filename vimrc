@@ -153,17 +153,23 @@ endif
 " Interface color
 " note: needs to be before the status line stuff
 colorscheme slate
+" for some reason nvim now defaults to setting termguicolors to on even though
+" documentation says it defaults to off
+" termguicolors lets one use 16-bit colors, but the named colors are not even
+" equivalent. also for some reason guibg=None is not respected.
+set notermguicolors
+" since vim 9.0 all schemes have a background color, which I don't want
+hi Normal ctermbg=None guibg=None
 " fix some weaknesses of the slate color scheme. it's all too much the same
 " color
-" since vim 9.0 all schemes have a background color, which I don't want
-hi Normal ctermbg=None
 hi Comment ctermfg=DarkCyan guifg=Cyan
-hi String ctermfg=Green guifg=Green
-hi Operator ctermfg=White guifg=Black
-hi Delimiter ctermfg=DarkMagenta guifg=Black
-hi LineNrAbove ctermfg=DarkGray
-hi LineNrBelow ctermfg=DarkGray
-hi LineNr term=bold ctermfg=White gui=bold guifg=Yellow
+hi String ctermfg=Green guifg=LightGreen
+hi Operator ctermfg=White guifg=White
+hi Delimiter ctermfg=DarkMagenta guifg=Magenta
+hi LineNrAbove ctermfg=DarkGray guifg=DarkGray
+hi LineNrBelow ctermfg=DarkGray guifg=DarkGray
+hi LineNr term=bold ctermfg=White gui=bold guifg=White
+hi DiagnosticHint ctermfg=Magenta guifg=Magenta
 
 " vim-rsi avoids remapping i_CTRL-T since it's deemed too important, but I
 " don't use it and I prefer to have this functunality available in insert mode
