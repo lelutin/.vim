@@ -157,7 +157,7 @@ colorscheme slate
 " documentation says it defaults to off
 " termguicolors lets one use 16-bit colors, but the named colors are not even
 " equivalent. also for some reason guibg=None is not respected.
-set notermguicolors
+"set notermguicolors
 " since vim 9.0 all schemes have a background color, which I don't want
 hi Normal ctermbg=None guibg=None
 " fix some weaknesses of the slate color scheme. it's all too much the same
