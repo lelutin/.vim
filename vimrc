@@ -170,6 +170,10 @@ hi LineNrAbove ctermfg=DarkGray guifg=DarkGray
 hi LineNrBelow ctermfg=DarkGray guifg=DarkGray
 hi LineNr term=bold ctermfg=White gui=bold guifg=White
 hi DiagnosticHint ctermfg=Magenta guifg=Magenta
+" Flip slate's coloring around for matching parens. It's confusing AF that the
+" one I'm standing on has a black background since my cursor is normally a light
+" grey 'background' block
+hi MatchParen ctermfg=LightGray ctermbg=DarkMagenta guifg=LightGray guibg=DarkMagenta
 
 " vim-rsi avoids remapping i_CTRL-T since it's deemed too important, but I
 " don't use it and I prefer to have this functunality available in insert mode
