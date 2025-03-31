@@ -137,18 +137,8 @@ set diffopt+=iwhite
 " use smarter diff algorithm. that's only visible in some circumstances
 set diffopt+=algorithm:histogram
 
-try
-  " if present, set default language from file in vimdir
-  let splangs = readfile(fnamemodify(expand('$MYVIMRC'), ':h') . '/spell_lang', '', 1)
-catch /Can't open file/
-  let splangs = []
-endtry
-if empty(splangs)
-  " default to french dictionary
-  set spelllang=fr
-else
-  let &spelllang = splangs[0]
-endif
+" check spelling in french and english
+set spelllang=fr,en
 
 " Interface color
 " note: needs to be before the status line stuff
