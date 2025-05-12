@@ -34,7 +34,6 @@ Plug 'tpope/vim-endwise'
 " ---- Code syntax
 Plug 'rodjek/vim-puppet' " puppet syntax hilighting
 Plug 'noprompt/vim-yardoc'  " colorize YARD tags and directives in ruby and puppet code
-Plug 'pearofducks/ansible-vim' " Make ansible playbooks look less like a bunch of all the same thing
 Plug 'preservim/vim-markdown' " better markdown syntax hilighting
 Plug 'stephpy/vim-yaml'  " better yaml syntax hilighting
 Plug 'cespare/vim-toml'  " TOML syntax highlighting
@@ -244,11 +243,6 @@ augroup vimrc
   autocmd BufNewFile *.py execute("0r ". fnamemodify(expand('$MYVIMRC'), ':h') ."/templates/python.py")
 augroup END
 
-" Detect playbooks properly to highlight certain ansible keywords in them.
-augroup ansible
-  au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
-augroup END
-
 " Open files located in the same dir in with the current file is edited
 nnoremap <leader>tw :tabe <C-R>=expand("%:.:h") . "/"<CR>
 nnoremap <leader>ew :e <C-R>=expand("%:.:h") . "/"<CR>
@@ -289,14 +283,8 @@ let g:coc_global_extensions = [
   \ 'coc-markdownlint',
   \ 'coc-vimlsp',
   \ 'coc-diagnostic',
-  \ '@yaegassy/coc-ansible',
   \ 'coc-rust-analyzer',
   \]
-
-" This is required for coc-ansible
-let g:coc_filetype_map = {
-  \ 'yaml.ansible': 'ansible',
-  \ }
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
