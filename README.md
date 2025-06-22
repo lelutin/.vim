@@ -67,6 +67,8 @@ défaut.
   (e.g. `<c-w>H` utilise "la gauche" pour le buffer actif)
 * `<c-w>+ / <c-w>-` :: augmenter / diminuer le nombre de lignes (la hauteur)
 * `N<c-w>_` :: définir le nombre de lignes (la hauteur) à N lignes
+* `<c-w>> / <c-w><` :: augmenter / diminuer la largeur
+* `N<c-w>|` :: définir le nombre de colonnes (la largeur) à N colonnes
 * `:term {cmd}` :: lancer `{cmd}` au lieu d'un shell dans un terminal
   * avec l'option `++no-close` en plus, le terminal sera fermé quand la
     commande se termine (comportement par défaut pour un shell)
