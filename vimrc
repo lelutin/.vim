@@ -37,6 +37,7 @@ Plug 'noprompt/vim-yardoc'  " colorize YARD tags and directives in ruby and pupp
 Plug 'preservim/vim-markdown' " better markdown syntax hilighting
 Plug 'stephpy/vim-yaml'  " better yaml syntax hilighting
 Plug 'cespare/vim-toml'  " TOML syntax highlighting
+Plug 'HiPhish/jinja.vim'  " jinja template syntax highlighting with subtype handling
 Plug 'aliou/bats.vim'  " BATS syntax hilighting
 Plug 'junegunn/vader.vim' " vimscript unit testing framework and syntax coloring for the files. used by vim-puppet
 
