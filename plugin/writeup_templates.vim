@@ -23,7 +23,7 @@ augroup writeups
   " show me what I done broke.
   autocmd BufNewFile ~/writeups/ressources/*.md 0r ~/writeups/templates/ressource.md
   autocmd BufNewFile ~/writeups/idées/*.md 0r ~/writeups/templates/idée.md
-  autocmd BufNewFile ~/writeups/recettes/*.md 0r ~/writeups/templates/recette.md
+  autocmd BufNewFile ~/recettes/*.md 0r ~/recettes/archetypes/default.md
   autocmd BufNewFile ~/writeups/checklists/*.md 0r ~/writeups/templates/checklist.md
 
   " To make it easier to manage checklists, it's fun to be able to toggle
