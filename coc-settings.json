@@ -5,15 +5,16 @@
       "args": [
         "/home/gabster/.local/lib/vimspector/gadgets/linux/puppet-editor-services/puppet-languageserver",
         "--stdio",
-        "--puppet-settings=--modulepath,~/dev/puppet/"
+        "--puppet-settings=--modulepath,~/dev/puppet"
       ],
       "filetypes": [
         "puppet",
-        "embeddedpuppet"
+        "epuppet"
       ],
       "rootPatterns": [
         ".git/",
-        "metadata.json"
+        "metadata.json",
+        "manifests/"
       ]
     }
   },
