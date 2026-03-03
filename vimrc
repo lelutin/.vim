@@ -266,7 +266,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 "
 nnoremap <leader>u :UndotreeToggle<CR>
 " show some context around changes
-let g:undotree_DiffCommand = "diff -buN"
+let g:undotree_DiffCommand = 'diff -buN'
 
 " coc.vim configuration
 "
