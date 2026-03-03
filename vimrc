@@ -349,6 +349,9 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
+" General Coc actions
+nnoremap <silent><nowait> <space>i  :<C-u>CocCommand document.toggleInlayHint<CR>
+
 " Mappings for CoCList
 " Show all lists
 nnoremap <silent><nowait> <space>l  :<C-u>CocList<CR>
