@@ -23,6 +23,7 @@ Plug 'tpope/vim-unimpaired' " set of command mappings
 Plug 'farmergreg/vim-lastplace' " restore last known cursor position and open folds to show content (avoid doing it for commit messages)
 " Plug 'junegunn/fzf' " command builder using fzf for fuzzing text
 " Plug 'junegunn/fzf.vim' " set of basic commands using fzf
+Plug 'mbbill/undotree' " Visualizer for vim's undo history tree
 
 " ---- Code formatting
 " LSP client: for language completion, linting, formatting, syntax checking and
@@ -260,6 +261,12 @@ map <F10> :echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans
 "
 " Enable indentation coloring for easier visual reference
 let g:indent_guides_enable_on_vim_startup = 1
+
+" undotree
+"
+nnoremap <leader>u :UndotreeToggle<CR>
+" show some context around changes
+let g:undotree_DiffCommand = "diff -buN"
 
 " coc.vim configuration
 "
